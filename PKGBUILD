@@ -7,7 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-4.20
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=4.20.5
+pkgver=4.20.6
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -20,19 +20,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
         '0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
         '0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch'
-        '0005-mmc-sdhci-iproc-handle-mmc_of_parse-errors-during-pr.patch'
         '0006-arm64-dts-rockchip-enable-usb3-for-roc-rk3328-cc-boa.patch'
 	'0007-firefly-fix-gamc-issue.patch'
         'config'
         'linux.preset'
         '99-linux.hook')
 md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
-         '252659f87621cc2190a2285662205c88'
-         '6280bbce4412b246197daa4c910488c2'
-         '6e806f8ea1545422539f3c8c20558a82'
-         'a43dbc3cc8f52b5329accf1694bd1de9'
-         'd10a52cb5878020b527cf335b74165e0'
-         '66b2ce380f45395e5ad19274ea335e36'
+         'b8faceed2182f048279e400846df8ab7'
+         'bca1ec27cc134ad3072dc7aa3ba97e10'
+         'f23af9d37f3d6ac18f95be65a798145d'
+         'b898b0199c7ded6d93e5f0f97568d3bc'
+         '5d31dd54a7e038e12bbeefa124907233'
          '5a09669d669727746354854954506452'
          'c7e8de91eaf4e4c97279cd2ff8c7a7ba'
          '7ab1ce179da5900d1b71759b9145ff14'
@@ -50,7 +48,6 @@ prepare() {
   git apply ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
   git apply ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
   git apply ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
-  git apply ../0005-mmc-sdhci-iproc-handle-mmc_of_parse-errors-during-pr.patch
   git apply ../0006-arm64-dts-rockchip-enable-usb3-for-roc-rk3328-cc-boa.patch
   git apply ../0007-firefly-fix-gamc-issue.patch
 
