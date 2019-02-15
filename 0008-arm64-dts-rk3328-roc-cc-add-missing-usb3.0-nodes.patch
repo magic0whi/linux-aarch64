@@ -1,0 +1,47 @@
+From d650aeef63c99ce6853d16272f3b5ea6eaf6cf54 Mon Sep 17 00:00:00 2001
+From: magic0whi <lollipop.studio.cn@gmail.com>
+Date: Fri, 15 Feb 2019 09:31:47 +0000
+Subject: [PATCH] arm64: dts: rk3328-roc-cc: add missing usb3.0 nodes
+
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 7f6e60020..16b5a3daa 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -54,6 +54,17 @@
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
++	vcc_host_5v: vcc-host-5v-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&usb30_host_drv>;
++		regulator-name = "vcc_host_5v";
++		regulator-always-on;
++		vin-supply = <&vcc_sys>;
++	};
++
+ 	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -247,6 +258,12 @@
+ 			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	usb3 {
++		usb30_host_drv: usb30-host-drv {
++			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &sdmmc {
+-- 
+2.20.1
+

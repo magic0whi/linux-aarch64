@@ -23,6 +23,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0005-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch'
         '0006-arm64-dts-rockchip-enable-usb3-for-roc-rk3328-cc-boa.patch'
         '0007-arm64-dts-rockchip-firefly-fix-gamc-issue-on-rk3328-.patch'
+        '0008-arm64-dts-rk3328-roc-cc-add-missing-usb3.0-nodes.patch'
         'config'
         'linux.preset'
         '99-linux.hook')
@@ -35,6 +36,7 @@ md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
          'ccdbf117e09e72ec7b3e0fd6e88e20c8'
          '2c3c18769f127f843ccf4a56be3da324'
          'b4d1602252fc3ccbaae6355ed85fcf1d'
+         'd5455d92959c58ac948e92a3bdb67b30'
          'c522e4c8763b74d3fbd0bfc2f05921aa'
          'b5ef67d6086e20de7b82265f562f88b1'
          '1d4477026533efaa0358a40855d50a83')
@@ -53,6 +55,7 @@ prepare() {
   git apply ../0005-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch
   git apply ../0006-arm64-dts-rockchip-enable-usb3-for-roc-rk3328-cc-boa.patch
   git apply ../0007-arm64-dts-rockchip-firefly-fix-gamc-issue-on-rk3328-.patch
+  git apply ../0008-arm64-dts-rk3328-roc-cc-add-missing-usb3.0-nodes.patch
 
   cat "${srcdir}/config" > ./.config
 
