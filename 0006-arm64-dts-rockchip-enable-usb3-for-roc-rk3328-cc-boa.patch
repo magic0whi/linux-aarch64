@@ -1,7 +1,7 @@
-From 41ae689ad428568a22f06fcb248f20af52770afe Mon Sep 17 00:00:00 2001
+From 2c0f71cf84447cbd17e7fb1d23b5ef6253d58509 Mon Sep 17 00:00:00 2001
 From: Levin Du <djw@t-chip.com.cn>
 Date: Wed, 15 Aug 2018 17:22:37 +0800
-Subject: [PATCH] arm64: dts: rockchip: enable usb3 for roc-rk3328-cc board
+Subject: [PATCH 3/3] arm64: dts: rockchip: enable usb3 for roc-rk3328-cc board
 
 Enable the USB 3.0 OTG controller and set as static xHCI host controller to
 support USB 3.0 HOST.
@@ -12,14 +12,13 @@ Signed-off-by: Levin Du <djw@t-chip.com.cn>
  1 file changed, 9 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 99d0d9912950..6ba67963eaf5 100644
+index a77c0c5f9..7f6e60020 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -295,3 +295,12 @@
- &usb_host0_ohci {
+@@ -298,6 +298,15 @@
  	status = "okay";
  };
-+
+ 
 +&usbdrd3 {
 +	status = "okay";
 +};
@@ -28,6 +27,10 @@ index 99d0d9912950..6ba67963eaf5 100644
 +	dr_mode = "host";
 +	status = "okay";
 +};
++
+ &vop {
+ 	status = "okay";
+ };
 -- 
-2.19.2
+2.20.1
 
