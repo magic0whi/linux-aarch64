@@ -24,6 +24,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0006-arm64-dts-rockchip-enable-usb3-for-roc-rk3328-cc-boa.patch'
         '0007-arm64-dts-rockchip-firefly-fix-gamc-issue-on-rk3328-.patch'
         '0008-arm64-dts-rk3328-roc-cc-add-missing-usb3.0-nodes.patch'
+        '0009-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
+        '0010-arm64-dts-rk3328-roc-cc-add-rk805-leds-on-rk3328-roc.patch'
         'config'
         'linux.preset'
         '99-linux.hook')
@@ -37,6 +39,8 @@ md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
          '2c3c18769f127f843ccf4a56be3da324'
          'b4d1602252fc3ccbaae6355ed85fcf1d'
          'd5455d92959c58ac948e92a3bdb67b30'
+         '7ef9c4b1772045c645a4a7069652a3d7'
+         'bdf471d6bf50122570b3a3d1f50f3ca6'
          'c522e4c8763b74d3fbd0bfc2f05921aa'
          'b5ef67d6086e20de7b82265f562f88b1'
          '1d4477026533efaa0358a40855d50a83')
@@ -56,6 +60,8 @@ prepare() {
   git apply ../0006-arm64-dts-rockchip-enable-usb3-for-roc-rk3328-cc-boa.patch
   git apply ../0007-arm64-dts-rockchip-firefly-fix-gamc-issue-on-rk3328-.patch
   git apply ../0008-arm64-dts-rk3328-roc-cc-add-missing-usb3.0-nodes.patch
+  git apply ../0009-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
+  git apply ../0010-arm64-dts-rk3328-roc-cc-add-rk805-leds-on-rk3328-roc.patch
 
   cat "${srcdir}/config" > ./.config
 
