@@ -76,11 +76,11 @@ build() {
   cd "${srcdir}/${_srcname}"
 
   # get kernel version
-  make prepare
+  make CC=clang CXX=clang++ prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-  make menuconfig # CLI menu for configuration
+  make CC=clang CXX=clang++ menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
@@ -100,9 +100,9 @@ build() {
 
   # build!
   unset LDFLAGS
-  make ${MAKEFLAGS} Image Image.gz modules
+  make CC=clang CXX=clang++ ${MAKEFLAGS} Image Image.gz modules
   # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
-  make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
+  make CC=clang CXX=clang++ ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 }
 
 _package() {
@@ -120,13 +120,13 @@ _package() {
   KARCH=arm64
 
   # get kernel version
-  _kernver="$(make kernelrelease)"
+  _kernver="$(make CC=clang CXX=clang++ kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware}
-  make INSTALL_MOD_PATH="${pkgdir}" modules_install
-  make INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
+  make CC=clang CXX=clang++ INSTALL_MOD_PATH="${pkgdir}" modules_install
+  make CC=clang CXX=clang++ INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
   cp arch/$KARCH/boot/Image{,.gz} "${pkgdir}/boot"
 
   # set correct depmod command for install
