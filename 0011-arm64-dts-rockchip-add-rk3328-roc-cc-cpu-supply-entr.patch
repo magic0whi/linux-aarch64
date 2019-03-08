@@ -1,0 +1,40 @@
+From 36316ce6f9dacea1ac80d5488b1bb41d3e12c082 Mon Sep 17 00:00:00 2001
+From: magic0whi <lollipop.studio.cn@gmail.com>
+Date: Fri, 8 Mar 2019 09:19:28 +0000
+Subject: [PATCH] arm64: dts: rockchip: add rk3328-roc-cc cpu-supply entries
+ for all cpu nodes
+
+In line with the rock64 dts, specify the cpu-supply
+for the other cpus as well
+
+Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 189167d1f..7f14d5039 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -108,6 +108,18 @@
+ 	cpu-supply = <&vdd_arm>;
+ };
+ 
++&cpu1 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_arm>;
++};
++
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-- 
+2.21.0
+

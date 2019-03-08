@@ -1,18 +1,17 @@
-From bec5c67b787bc3070e098e5b45a3b0335e539f58 Mon Sep 17 00:00:00 2001
+From d18b0b4c7810ab24ff029c878b25ed581e8ad4a7 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Fri, 15 Feb 2019 10:08:02 +0000
-Subject: [PATCH 2/2] arm64: dts: rk3328-roc-cc: add rk805 leds on
- rk3328-roc-cc
+Subject: [PATCH] arm64: dts: rk3328-roc-cc: add rk805 leds on rk3328-roc-cc
 
 ---
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index ae34bcf48..052456638 100644
+index be5fd6c49..189167d1f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -85,6 +85,22 @@
+@@ -85,6 +85,23 @@
  		regulator-max-microvolt = <5000000>;
  		vin-supply = <&dc_12v>;
  	};
@@ -21,13 +20,14 @@ index ae34bcf48..052456638 100644
 +		compatible = "gpio-leds";
 +		power {
 +			label = "firefly:blue:power";
++			linux,default-trigger = "heartbeat";
 +			gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
 +			default-state = "on";
 +		};
 +
 +		user {
 +			label = "firefly:yellow:user";
-+			linux,default-trigger = "heartbeat";
++			linux,default-trigger = "mmc1";
 +			gpios = <&rk805 0 GPIO_ACTIVE_LOW>;
 +			default-state = "off";
 +		};
@@ -36,5 +36,5 @@ index ae34bcf48..052456638 100644
  
  &cpu0 {
 -- 
-2.20.1
+2.21.0
 
