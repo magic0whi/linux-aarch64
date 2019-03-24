@@ -7,7 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-5.0
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.0.0
+pkgver=5.0.2
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -15,7 +15,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
         '0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
@@ -33,6 +33,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('7381ce8aac80a01448e065ce795c19c0'
+         '31220991722b9f40ef9d7370557754a0'
          'ba4daec24d71b25d6db1e29bf95ba22f'
          'dd09eca8f8c516667e995fc3db1d2236'
          'a8f434da98e1b192f0486b6ba6458616'
@@ -45,7 +46,7 @@ md5sums=('7381ce8aac80a01448e065ce795c19c0'
          '14ed5ab192e698d6352beef090808776'
          '9ac02e6fc85dbeb9e76d422ff36fed12'
          'ce3e371ab138d1696ac42a737256a20f'
-         'd50803c5bb0585d7ac691f3f60373dd3'
+         '563327a4eac6af3b9d780ea1bc385e19'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -54,7 +55,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #git apply --whitespace=nowarn ../patch-${pkgver}
+  git apply --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
   git apply ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
@@ -67,6 +68,8 @@ prepare() {
   git apply ../0008-arm64-dts-rk3328-roc-cc-add-missing-usb3.0-nodes.patch
   git apply ../0009-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
   git apply ../0010-arm64-dts-rk3328-roc-cc-add-rk805-leds-on-rk3328-roc.patch
+  git apply ../0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch
+  git apply ../0012-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
 
   cat "${srcdir}/config" > ./.config
 
@@ -81,11 +84,11 @@ build() {
   cd "${srcdir}/${_srcname}"
 
   # get kernel version
-  make CC=clang CXX=clang++ prepare
+  make prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-  make CC=clang CXX=clang++ menuconfig # CLI menu for configuration
+  #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
@@ -105,9 +108,9 @@ build() {
 
   # build!
   unset LDFLAGS
-  make CC=clang CXX=clang++ ${MAKEFLAGS} Image Image.gz modules
+  make ${MAKEFLAGS} Image Image.gz modules
   # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
-  make CC=clang CXX=clang++ ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
+  make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 }
 
 _package() {
@@ -125,13 +128,13 @@ _package() {
   KARCH=arm64
 
   # get kernel version
-  _kernver="$(make CC=clang CXX=clang++ kernelrelease)"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make CC=clang CXX=clang++ INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  make CC=clang CXX=clang++ INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
+  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  make INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
   cp arch/$KARCH/boot/Image{,.gz} "${pkgdir}/boot"
 
   # make room for external modules
