@@ -1,0 +1,95 @@
+From c3bfed8ba8b6ea142d8f08a73e406663d2f8e699 Mon Sep 17 00:00:00 2001
+From: magic0whi <lollipop.studio.cn@gmail.com>
+Date: Thu, 4 Apr 2019 10:24:19 +0000
+Subject: [PATCH] arm64: dts: rockchip: add spdif sound node & analog audio
+ node for roc-rk3328-cc
+
+---
+ .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 50 +++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 5af00e47a..14b0fc4fb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -86,6 +86,24 @@
+ 		vin-supply = <&dc_12v>;
+ 	};
+ 
++	sound {
++		compatible = "audio-graph-card";
++		label = "rockchip,rk3328";
++		dais = <&i2s1_p0
++			&spdif_p0>;
++	};
++
++	spdif-dit {
++		compatible = "linux,spdif-dit";
++		#sound-dai-cells = <0>;
++
++		port {
++			dit_p0_0: endpoint {
++				remote-endpoint = <&spdif_p0_0>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		power {
+@@ -104,6 +122,16 @@
+ 	};
+ };
+ 
++&codec {
++	status = "okay";
++
++	port@0 {
++		codec_p0_0: endpoint {
++			remote-endpoint = <&i2s1_p0_0>;
++		};
++	};
++};
++
+ &cpu0 {
+ 	cpu-supply = <&vdd_arm>;
+ };
+@@ -276,6 +304,18 @@
+ 	};
+ };
+ 
++&i2s1 {
++	status = "okay";
++
++	i2s1_p0: port {
++		i2s1_p0_0: endpoint {
++			dai-format = "i2s";
++			mclk-fs = <256>;
++			remote-endpoint = <&codec_p0_0>;
++		};
++	};
++};
++
+ &io_domains {
+ 	status = "okay";
+ 
+@@ -325,6 +365,16 @@
+ 	status = "okay";
+ };
+ 
++&spdif {
++	status = "okay";
++
++	spdif_p0: port {
++		spdif_p0_0: endpoint {
++			remote-endpoint = <&dit_p0_0>;
++		};
++	};
++};
++
+ &tsadc {
+ 	status = "okay";
+ };
+-- 
+2.21.0
+

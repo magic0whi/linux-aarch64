@@ -28,6 +28,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0010-arm64-dts-rk3328-roc-cc-add-rk805-leds-on-rk3328-roc.patch'
         '0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch'
         '0012-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
+        '0013-clk-rockchip-fix-wrong-clock-definitions-for-rk3328.patch'
+        '0014-arm64-dts-rockchip-fix-rk3328-rgmii-high-tx-error-ra.patch'
+        '0015-arm64-dts-rockchip-fix-rk3328-sdmmc0-write-errors.patch'
+        '0016-arm64-dts-rockchip-add-spdif-sound-node-analog-audio.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -46,6 +50,10 @@ md5sums=('7381ce8aac80a01448e065ce795c19c0'
          '14ed5ab192e698d6352beef090808776'
          '9ac02e6fc85dbeb9e76d422ff36fed12'
          'ce3e371ab138d1696ac42a737256a20f'
+         '8b353e2b7ccaefd75d8dfce6dd7bbe50'
+         '6921f1b0bddd3ac8532c63ff3908e595'
+         '4f677e10ce27ab4f96ed59be9ee32538'
+         'c594f030f0a70c6f587763f6d5eacf20'
          '2e53e827641d0254dcf179b117772ba4'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -70,6 +78,10 @@ prepare() {
   git apply ../0010-arm64-dts-rk3328-roc-cc-add-rk805-leds-on-rk3328-roc.patch
   git apply ../0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch
   git apply ../0012-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
+  git apply ../0013-clk-rockchip-fix-wrong-clock-definitions-for-rk3328.patch
+  git apply ../0014-arm64-dts-rockchip-fix-rk3328-rgmii-high-tx-error-ra.patch
+  git apply ../0015-arm64-dts-rockchip-fix-rk3328-sdmmc0-write-errors.patch
+  git apply ../0016-arm64-dts-rockchip-add-spdif-sound-node-analog-audio.patch
 
   cat "${srcdir}/config" > ./.config
 
