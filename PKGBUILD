@@ -32,6 +32,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0014-arm64-dts-rockchip-fix-rk3328-rgmii-high-tx-error-ra.patch'
         '0015-arm64-dts-rockchip-fix-rk3328-sdmmc0-write-errors.patch'
         '0016-arm64-dts-rockchip-add-spdif-sound-node-analog-audio.patch'
+        '0017-clk-rockchip-fix-frac-settings-of-GPLL-clock-for-rk3.patch'
+        '0018-arm64-dts-rockchip-add-rk3328-ACODEC-node.patch'
+        '0019-arm64-dts-rockchip-move-rk3328-sound-dai-cells-to-th.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -54,6 +57,9 @@ md5sums=('7381ce8aac80a01448e065ce795c19c0'
          '6921f1b0bddd3ac8532c63ff3908e595'
          '4f677e10ce27ab4f96ed59be9ee32538'
          'c594f030f0a70c6f587763f6d5eacf20'
+         'bebadea7f0da3452f0793ca5c8cafcc2'
+         '0c005a7c470382d0dd541362ee6c0d9f'
+         '4c05bd581f613bc09915436e6b1cda9c'
          '2e53e827641d0254dcf179b117772ba4'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -82,6 +88,9 @@ prepare() {
   git apply ../0014-arm64-dts-rockchip-fix-rk3328-rgmii-high-tx-error-ra.patch
   git apply ../0015-arm64-dts-rockchip-fix-rk3328-sdmmc0-write-errors.patch
   git apply ../0016-arm64-dts-rockchip-add-spdif-sound-node-analog-audio.patch
+  git apply ../0017-clk-rockchip-fix-frac-settings-of-GPLL-clock-for-rk3.patch
+  git apply ../0018-arm64-dts-rockchip-add-rk3328-ACODEC-node.patch
+  git apply ../0019-arm64-dts-rockchip-move-rk3328-sound-dai-cells-to-th.patch
 
   cat "${srcdir}/config" > ./.config
 
