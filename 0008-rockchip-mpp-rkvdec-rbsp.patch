@@ -1,0 +1,156 @@
+From 96443dd6f9bc53cdd321f03227ece8e5da72fcbd Mon Sep 17 00:00:00 2001
+From: Randy Li <randy.li@rock-chips.com>
+Date: Wed, 10 Apr 2019 20:42:19 +0800
+Subject: [PATCH 08/29] rockchip: mpp: rkvdec: rbsp
+
+It is a bit writer.
+
+Signed-off-by: Randy Li <randy.li@rock-chips.com>
+---
+ drivers/staging/rockchip-mpp/rkvdec/rbsp.c | 96 ++++++++++++++++++++++
+ drivers/staging/rockchip-mpp/rkvdec/rbsp.h | 30 +++++++
+ 2 files changed, 126 insertions(+)
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/rbsp.c
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/rbsp.h
+
+diff --git a/drivers/staging/rockchip-mpp/rkvdec/rbsp.c b/drivers/staging/rockchip-mpp/rkvdec/rbsp.c
+new file mode 100644
+index 000000000..3fbc50e9b
+--- /dev/null
++++ b/drivers/staging/rockchip-mpp/rkvdec/rbsp.c
+@@ -0,0 +1,96 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Copyright (C) 2012 Vista Silicon S.L.
++ * Copyright (C) 2019 Randy Li <ayaka@soulik.info>
++ *
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#include <asm-generic/errno-base.h>
++#include <linux/kernel.h>
++#include <linux/types.h>
++
++#include "rbsp.h"
++
++int rbsp_init(struct rbsp *rbsp, void *buf, int size, int bit_pos)
++{
++	if (!buf)
++		return -EINVAL;
++	if (DIV_ROUND_UP(bit_pos, 32) >= size)
++		return -EINVAL;
++
++	rbsp->buf = buf;
++	rbsp->size = size >> 2;
++	rbsp->pos = bit_pos;
++
++	return 0;
++}
++
++static inline int rbsp_read_bit(struct rbsp *rbsp)
++{
++	int shift = rbsp->pos % 32;
++	int ofs = rbsp->pos++ / 32;
++
++	if (ofs >= rbsp->size)
++		return -EINVAL;
++
++	return (rbsp->buf[ofs] >> shift) & 1;
++}
++
++static inline int rbsp_write_bit(struct rbsp *rbsp, int bit)
++{
++	int shift = rbsp->pos % 32;
++	int ofs = rbsp->pos++ / 32;
++
++	if (ofs >= rbsp->size)
++		return -EINVAL;
++
++	rbsp->buf[ofs] &= ~(1 << shift);
++	rbsp->buf[ofs] |= bit << shift;
++
++	return 0;
++}
++
++int rbsp_write_bits(struct rbsp *rbsp, int num, int value)
++{
++	int shift = rbsp->pos % 32;
++	int ofs = rbsp->pos / 32;
++
++	if (ofs >= rbsp->size)
++		return -EINVAL;
++
++	if (num + shift >= 32) {
++		u32 lbits = 32 - shift;
++		u32 hbits = num + shift - 32;
++
++		rbsp->buf[ofs] &= ~(((1 << lbits) - 1) << shift);
++		rbsp->buf[ofs] |= value << shift;
++
++		value >>= (32 - shift);
++		rbsp->buf[ofs + 1] &= ~(((1 << hbits) - 1));
++		rbsp->buf[ofs + 1] |= value;
++	} else {
++		rbsp->buf[ofs] &= ~(((1 << num) - 1) << shift);
++		rbsp->buf[ofs] |= value << shift;
++	}
++
++	rbsp->pos += num;
++
++	return 0;
++}
++
++int rbsp_write_flag(struct rbsp *rbsp, int value)
++{
++	if (value)
++		return rbsp_write_bit(rbsp, BIT(0));
++	else
++		return rbsp_write_bit(rbsp, 0);
++}
+diff --git a/drivers/staging/rockchip-mpp/rkvdec/rbsp.h b/drivers/staging/rockchip-mpp/rkvdec/rbsp.h
+new file mode 100644
+index 000000000..d87c582bf
+--- /dev/null
++++ b/drivers/staging/rockchip-mpp/rkvdec/rbsp.h
+@@ -0,0 +1,30 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Copyright (C) 2012 Vista Silicon S.L.
++ * Copyright (C) 2019 Randy Li <ayaka@soulik.info>
++ *
++ * This software is licensed under the terms of the GNU General Public
++ * License version 2, as published by the Free Software Foundation, and
++ * may be copied, distributed, and modified under those terms.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#ifndef _RBSP_H_
++#define _RBSP_H_
++
++struct rbsp {
++	u32 *buf;
++	int size;
++	int pos;
++};
++
++int rbsp_init(struct rbsp *rbsp, void *buf, int size, int bit_pos);
++int rbsp_write_flag(struct rbsp *rbsp, int bit);
++int rbsp_write_bits(struct rbsp *rbsp, int num, int value);
++
++#endif
+-- 
+2.21.0
+

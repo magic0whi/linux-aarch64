@@ -1,0 +1,127 @@
+From a045f89686e16471dbc277ff14f9b4a8f062eae4 Mon Sep 17 00:00:00 2001
+From: Randy Li <randy.li@rock-chips.com>
+Date: Wed, 10 Apr 2019 20:42:23 +0800
+Subject: [PATCH 12/29] rockchip: mpp: vdpu2: move qtable to input buffer
+
+I want the memory region !!!
+It can save more time if those data are prepared in userspace.
+
+Signed-off-by: Randy Li <randy.li@rock-chips.com>
+---
+ drivers/staging/rockchip-mpp/mpp_dev_common.c |  3 +--
+ drivers/staging/rockchip-mpp/mpp_dev_common.h |  3 ---
+ drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c  |  3 +++
+ drivers/staging/rockchip-mpp/vdpu2/mpeg2.c    | 20 +++++++++++--------
+ 4 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_common.c b/drivers/staging/rockchip-mpp/mpp_dev_common.c
+index 21816ad8a..97c4d897f 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_common.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_common.c
+@@ -1217,8 +1217,7 @@ static int rockchip_mpp_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+ 	src_vq->drv_priv = session;
+ 	src_vq->mem_ops = &vb2_dma_contig_memops;
+-	src_vq->dma_attrs = DMA_ATTR_ALLOC_SINGLE_PAGES |
+-			    DMA_ATTR_NO_KERNEL_MAPPING;
++	src_vq->dma_attrs = DMA_ATTR_ALLOC_SINGLE_PAGES;
+ 	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+ 	src_vq->min_buffers_needed = 1;
+ 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_common.h b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+index 33d7725be..36770af53 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_common.h
++++ b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+@@ -100,9 +100,6 @@ struct mpp_session {
+ 	struct v4l2_ctrl_handler ctrl_handler;
+ 	/* TODO: FIXME: slower than helper function ? */
+ 	struct v4l2_ctrl **ctrls;
+-
+-	dma_addr_t qtable_addr;
+-	void *qtable_vaddr;
+ };
+ 
+ /* The context for the a task */
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+index 1be73ab9c..92d68b962 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+@@ -176,6 +176,9 @@ static int rkvdpu_s_fmt_vid_out_mplane(struct file *filp, void *priv,
+ 	if (sizes >= SZ_16M)
+ 		return -EINVAL;
+ 
++	/* For those slice header data */
++	pix_mp->plane_fmt[pix_mp->num_planes - 1].sizeimage += SZ_1M;
++
+ 	if (vdpu_setup_ctrls(session, pix_mp->pixelformat))
+ 		return -EINVAL;
+ 
+diff --git a/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c b/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+index 837ee4a4a..c12d1a8ef 100644
+--- a/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
++++ b/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+@@ -113,7 +113,10 @@ int rkvdpu_mpeg2_gen_reg(struct mpp_session *session, void *regs,
+ 	const struct v4l2_ctrl_mpeg2_slice_params *params;
+ 	const struct v4l2_mpeg2_sequence *sequence;
+ 	const struct v4l2_mpeg2_picture *picture;
++	const struct v4l2_ctrl_mpeg2_quantization *quantization;
+ 	struct vdpu2_regs *p_regs = regs;
++	void *qtable = NULL;
++	size_t stream_len = 0;
+ 
+ 	params = rockchip_mpp_get_cur_ctrl(session,
+ 					   V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
+@@ -122,6 +125,8 @@ int rkvdpu_mpeg2_gen_reg(struct mpp_session *session, void *regs,
+ 
+ 	sequence = &params->sequence;
+ 	picture = &params->picture;
++	quantization = rockchip_mpp_get_cur_ctrl(session,
++			V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
+ 
+ 	init_hw_cfg(p_regs);
+ 
+@@ -198,7 +203,13 @@ int rkvdpu_mpeg2_gen_reg(struct mpp_session *session, void *regs,
+ 	p_regs->sw64.rlc_vlc_base =
+ 	    vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
+ 	p_regs->sw122.strm_start_bit = params->data_bit_offset;
+-	p_regs->sw51.stream_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
++	stream_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
++	p_regs->sw51.stream_len = stream_len;
++
++	qtable = vb2_plane_vaddr(&src_buf->vb2_buf, 0) + ALIGN(stream_len, 8);
++	mpeg2_dec_copy_qtable(qtable, quantization);
++        p_regs->sw61.qtable_base = p_regs->sw64.rlc_vlc_base
++		+ ALIGN(stream_len, 8);
+ 
+ 	return 0;
+ }
+@@ -207,7 +218,6 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ {
+ 	const struct v4l2_ctrl_mpeg2_slice_params *params;
+ 	const struct v4l2_mpeg2_sequence *sequence;
+-	const struct v4l2_ctrl_mpeg2_quantization *quantization;
+ 	const struct v4l2_mpeg2_picture *picture;
+ 	struct vb2_v4l2_buffer *dst_buf;
+ 	dma_addr_t cur_addr, fwd_addr, bwd_addr;
+@@ -220,9 +230,6 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ 	picture = &params->picture;
+ 	sequence = &params->sequence;
+ 
+-	quantization = rockchip_mpp_get_cur_ctrl(session,
+-			V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
+-
+ 	dst_buf = v4l2_m2m_next_dst_buf(session->fh.m2m_ctx);
+ 	cur_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
+ 
+@@ -266,8 +273,5 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ 		p_regs->sw135.refer3_base = cur_addr >> 2;
+ 	}
+ 
+-	mpeg2_dec_copy_qtable(session->qtable_vaddr, quantization);
+-        p_regs->sw61.qtable_base = session->qtable_addr;
+-
+ 	return 0;
+ }
+-- 
+2.21.0
+

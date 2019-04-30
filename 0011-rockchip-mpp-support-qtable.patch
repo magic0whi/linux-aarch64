@@ -1,0 +1,110 @@
+From 4b20cac95d54be08b89b78f4e308146fcbd3cd24 Mon Sep 17 00:00:00 2001
+From: Randy Li <randy.li@rock-chips.com>
+Date: Wed, 10 Apr 2019 20:42:22 +0800
+Subject: [PATCH 11/29] rockchip: mpp: support qtable
+
+I don't care, I don't want to store buffers for a session.
+I just want to use it to verify the FFmpeg.
+---
+ drivers/staging/rockchip-mpp/mpp_dev_common.h |  3 +++
+ drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c  |  5 ++++-
+ drivers/staging/rockchip-mpp/vdpu2/mpeg2.c    | 13 ++++++++-----
+ 3 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_common.h b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+index 36770af53..33d7725be 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_common.h
++++ b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+@@ -100,6 +100,9 @@ struct mpp_session {
+ 	struct v4l2_ctrl_handler ctrl_handler;
+ 	/* TODO: FIXME: slower than helper function ? */
+ 	struct v4l2_ctrl **ctrls;
++
++	dma_addr_t qtable_addr;
++	void *qtable_vaddr;
+ };
+ 
+ /* The context for the a task */
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+index dbd9f3345..1be73ab9c 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+@@ -246,6 +246,9 @@ static int rkvdpu_open(struct file *filp)
+ 	if (IS_ERR_OR_NULL(session))
+ 		return PTR_ERR(session);
+ 
++	session->qtable_vaddr = dmam_alloc_coherent(mpp_dev->dev, 64 * 4,
++						    &session->qtable_addr,
++						    GFP_KERNEL);
+ 	filp->private_data = &session->fh;
+ 	pm_runtime_get_sync(mpp_dev->dev);
+ 
+@@ -529,7 +532,7 @@ static int rockchip_mpp_rkvdpu_probe(struct platform_device *pdev)
+ 	ret = mpp_dev_register_node(mpp_dev, mpp_dev->variant->node_name,
+ 				    NULL, &rkvdpu_ioctl_ops);
+ 	if (ret)
+-		dev_err(dev, "register char device failed: %d\n", ret);
++		dev_err(dev, "register v4l2/media device failed: %d\n", ret);
+ 
+ 	memcpy(mpp_dev->fmt_out, fmt_out_templ, sizeof(fmt_out_templ));
+ 	memcpy(mpp_dev->fmt_cap, fmt_cap_templ, sizeof(fmt_cap_templ));
+diff --git a/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c b/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+index d32958c4c..837ee4a4a 100644
+--- a/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
++++ b/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+@@ -52,7 +52,7 @@ static const u8 intra_default_q_matrix[64] = {
+ static void mpeg2_dec_copy_qtable(u8 * qtable, const struct v4l2_ctrl_mpeg2_quantization
+ 				  *ctrl)
+ {
+-	int i, n;
++	int i;
+ 
+ 	if (!qtable || !ctrl)
+ 		return;
+@@ -111,16 +111,12 @@ int rkvdpu_mpeg2_gen_reg(struct mpp_session *session, void *regs,
+ 			 struct vb2_v4l2_buffer *src_buf)
+ {
+ 	const struct v4l2_ctrl_mpeg2_slice_params *params;
+-	const struct v4l2_ctrl_mpeg2_quantization *quantization;
+ 	const struct v4l2_mpeg2_sequence *sequence;
+ 	const struct v4l2_mpeg2_picture *picture;
+ 	struct vdpu2_regs *p_regs = regs;
+ 
+ 	params = rockchip_mpp_get_cur_ctrl(session,
+ 					   V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
+-	quantization = rockchip_mpp_get_cur_ctrl(session,
+-						 V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
+-
+ 	if (!params)
+ 		return -EINVAL;
+ 
+@@ -211,6 +207,7 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ {
+ 	const struct v4l2_ctrl_mpeg2_slice_params *params;
+ 	const struct v4l2_mpeg2_sequence *sequence;
++	const struct v4l2_ctrl_mpeg2_quantization *quantization;
+ 	const struct v4l2_mpeg2_picture *picture;
+ 	struct vb2_v4l2_buffer *dst_buf;
+ 	dma_addr_t cur_addr, fwd_addr, bwd_addr;
+@@ -223,6 +220,9 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ 	picture = &params->picture;
+ 	sequence = &params->sequence;
+ 
++	quantization = rockchip_mpp_get_cur_ctrl(session,
++			V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
++
+ 	dst_buf = v4l2_m2m_next_dst_buf(session->fh.m2m_ctx);
+ 	cur_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
+ 
+@@ -266,5 +266,8 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ 		p_regs->sw135.refer3_base = cur_addr >> 2;
+ 	}
+ 
++	mpeg2_dec_copy_qtable(session->qtable_vaddr, quantization);
++        p_regs->sw61.qtable_base = session->qtable_addr;
++
+ 	return 0;
+ }
+-- 
+2.21.0
+

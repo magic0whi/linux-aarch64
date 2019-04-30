@@ -1,7 +1,7 @@
-From 187bfd33f4b7c07fa1fae42cb9d7fd5912d983b7 Mon Sep 17 00:00:00 2001
-From: magic0whi <lollipop.studio.cn@gmail.com>
-Date: Thu, 4 Apr 2019 10:03:20 +0000
-Subject: [PATCH] clk: rockchip: fix wrong clock definitions for rk3328
+From 784594ac7d8baf74e3639c526889b05c596ef009 Mon Sep 17 00:00:00 2001
+From: Jonas Karlman <jonas@kwiboo.se>
+Date: Sun, 10 Mar 2019 12:00:45 +0000
+Subject: [PATCH 28/29] clk: rockchip: fix wrong clock definitions for rk3328
 
 This patch fixes definition of several clock gate and select register
 that is wrong for rk3328 referring to the TRM and vendor kernel.
@@ -19,12 +19,13 @@ Fix clock definition for:
 
 Fixes: fe3511ad8a1c ("clk: rockchip: add clock controller for rk3328")
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Tested-by: Peter Geis <pgwipeout@gmail.com>
 ---
  drivers/clk/rockchip/clk-rk3328.c | 18 +++++++++---------
  1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
-index faa94adb2..5f6b6bcc2 100644
+index 65ab5c2f4..f12142d9c 100644
 --- a/drivers/clk/rockchip/clk-rk3328.c
 +++ b/drivers/clk/rockchip/clk-rk3328.c
 @@ -458,7 +458,7 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
