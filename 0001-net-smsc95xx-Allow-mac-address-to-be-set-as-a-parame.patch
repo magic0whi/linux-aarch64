@@ -1,7 +1,7 @@
-From f002685eb4c5f97310d33fcc893412b3ec4c8b97 Mon Sep 17 00:00:00 2001
+From 2e5ce11373e41ec30fc905870388fe505fbfedd2 Mon Sep 17 00:00:00 2001
 From: popcornmix <popcornmix@gmail.com>
 Date: Tue, 18 Feb 2014 01:43:50 -0300
-Subject: [PATCH 01/29] net/smsc95xx: Allow mac address to be set as a
+Subject: [PATCH 01/21] net/smsc95xx: Allow mac address to be set as a
  parameter
 
 ---

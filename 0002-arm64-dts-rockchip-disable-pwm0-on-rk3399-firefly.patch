@@ -1,7 +1,7 @@
-From 0d2008e06657350b6015c98b04690a5e28ef0ab0 Mon Sep 17 00:00:00 2001
+From 139819b8d6aaff8df12d478bbb51899e3ae104f0 Mon Sep 17 00:00:00 2001
 From: Kevin Mihelich <kevin@archlinuxarm.org>
 Date: Mon, 7 Aug 2017 19:34:57 -0600
-Subject: [PATCH 02/29] arm64: dts: rockchip: disable pwm0 on rk3399-firefly
+Subject: [PATCH 02/21] arm64: dts: rockchip: disable pwm0 on rk3399-firefly
 
 Workaround for intermittent boot hangs due to pwm0 probe disabling the PWM clock.
 ---

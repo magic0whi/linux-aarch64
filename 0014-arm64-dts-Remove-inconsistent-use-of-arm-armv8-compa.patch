@@ -1,7 +1,7 @@
-From 16b967ddf02bb9a43f3f0da057613436024e7663 Mon Sep 17 00:00:00 2001
+From 30acd3b6a69c8be787567741ffdb170ef1221b84 Mon Sep 17 00:00:00 2001
 From: Rob Herring <robh@kernel.org>
 Date: Mon, 14 Jan 2019 11:45:33 -0600
-Subject: [PATCH 27/29] arm64: dts: Remove inconsistent use of 'arm,armv8'
+Subject: [PATCH 14/21] arm64: dts: Remove inconsistent use of 'arm,armv8'
  compatible string
 
 The 'arm,armv8' compatible string is only for software models. It adds
@@ -3449,7 +3449,7 @@ index 9aa8d5ef9..eb992d60e 100644
  			enable-method = "psci";
  			clocks = <&cru ARMCLK>;
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 354c6b348..5eee7c2ee 100644
+index 13129c1fb..99475b6cd 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 @@ -37,7 +37,7 @@

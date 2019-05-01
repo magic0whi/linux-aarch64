@@ -1,7 +1,7 @@
-From 784594ac7d8baf74e3639c526889b05c596ef009 Mon Sep 17 00:00:00 2001
+From 2a6cbbb89bb4ee22a576ceb5342f502c7ff64431 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 10 Mar 2019 12:00:45 +0000
-Subject: [PATCH 28/29] clk: rockchip: fix wrong clock definitions for rk3328
+Subject: [PATCH 15/21] clk: rockchip: fix wrong clock definitions for rk3328
 
 This patch fixes definition of several clock gate and select register
 that is wrong for rk3328 referring to the TRM and vendor kernel.

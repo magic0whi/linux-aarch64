@@ -1,7 +1,7 @@
-From 968b22e58b159826f448300015fb86affac8f87a Mon Sep 17 00:00:00 2001
+From faa19997ef2b30fb290b459962cc67c62374b720 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 11 Feb 2019 02:04:39 +0800
-Subject: [PATCH 17/29] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
+Subject: [PATCH 05/21] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
  stability issues
 
 This patch is a port of the fix from

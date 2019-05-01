@@ -1,7 +1,7 @@
-From 79976e49b1519fbead7f5a992dbb5c8663ae6413 Mon Sep 17 00:00:00 2001
+From 334db510c857396388c6f9c38d46a9bfb6b93789 Mon Sep 17 00:00:00 2001
 From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
 Date: Fri, 1 Mar 2019 00:29:23 +0200
-Subject: [PATCH 18/29] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
+Subject: [PATCH 06/21] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
  tx/rx_delay
 
 The rk3328-roc-cc board exhibits tx stability issues with large packets,
