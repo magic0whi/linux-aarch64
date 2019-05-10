@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64
-_srcname=linux-5.0
+_srcname=linux-5.1
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.0.10
+pkgver=5.1.0
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -15,56 +15,41 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
         '0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
         '0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch'
-        '0005-arm64-dts-rockchip-fix-rk3328-roc-cc-gmac2io-stabili.patch'
-        '0006-arm64-dts-rockchip-fix-rk3328-roc-cc-gmac2io-tx-rx_d.patch'
-        '0007-arm64-dts-rockchip-set-TX-PBL-for-rk3328-roc-cc-gmac.patch'
-        '0008-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
-        '0009-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
-        '0010-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch'
-        '0011-arm64-dts-rockchip-give-some-life-to-the-rk3328-roc-.patch'
-        '0012-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
-        '0013-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch'
-        '0014-arm64-dts-Remove-inconsistent-use-of-arm-armv8-compa.patch'
-        '0015-clk-rockchip-fix-wrong-clock-definitions-for-rk3328.patch'
-        '0016-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch'
-        '0017-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch'
-        '0018-arm64-dts-rockchip-move-rk3328-sound-dai-cells-to-th.patch'
-        '0019-arm64-dts-rockchip-enable-analog-audio-node-for-rock.patch'
-        '0020-arm64-dts-rockchip-add-rk3328-ACODEC-node.patch'
-        '0021-arm64-dts-rockchip-add-spdif-sound-analog-audio-node.patch'
+        '0005-arm64-dts-rockchip-set-TX-PBL-for-rk3328-roc-cc-gmac.patch'
+        '0006-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
+        '0007-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
+        '0008-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch'
+        '0009-arm64-dts-rockchip-give-some-life-to-the-rk3328-roc-.patch'
+        '0010-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
+        '0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch'
+        '0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch'
+        '0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch'
+        '0014-arm64-dts-rockchip-add-spdif-sound-analog-audio-node.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('7381ce8aac80a01448e065ce795c19c0'
-         'a46bbfe17039c1fa81edc847af5ea664'
-         '6290dd4322186d8b9a9747bd7f17a826'
-         '0b763e0f6df63b2813d3741b7b78fa65'
-         'a598737efec6c6e92b9cb1eccb94cb6a'
-         'a6c9fa68c202a28989531456c8f58906'
-         '570b3c66947268ee45a07754ef448877'
-         'fdfe9d63edcfe6b55dd74f547f6a4e83'
-         '5cbdc8982f6ff672f77b58217fd28b20'
-         '6d4f34243d3daf5d7f8ba24eb829afa0'
-         '686dd2029bba64af692c17a1e0acec9b'
-         'f63c26a9c93af4ee267bb47a271e94fa'
-         '33a39e3d7200abd7d55a59c19c26e3a9'
-         'd52d36950d09f94e23ff92de1c8451fc'
-         '4ce86391a1902c99473a8585e16f1619'
-         '8c0698626565abcf4159765cedd0a4f1'
-         '1041844ff4a39d4defe79cf47387054e'
-         '0f1a61bc8090dea666fae5219152b82a'
-         '5ff1c82c674b1ee9e2351040de336de8'
-         'fb41215e26d09ec74609e7b3ac3c86d2'
-         'f195fa84ade0589db1978434f90259c3'
-         'e06a0e630b47a7e10942aae45728fc75'
-         '57c889a5938ce7a076fc01abd2d47afc'
-         '45f7d5b1b1b8db98e37e7a64d4e81ed4'
+md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
+         'dd94496f7718cb47dc0d633916ab9fd3'
+         'c1265ed7e5a3d4431eff37b7e229c8c7'
+         'd875eae528939e4b74b8b51d3de4a5c0'
+         'bd292169696c90897fb3db1477a8a9ea'
+         '2daf43ef575e2cfa261029d4c1dfd641'
+         'ccdc0e5c4e924963627c8af201a6a2f2'
+         '123de3dcbf079f551a4fe7bb6a39bb8b'
+         '014ec0e597cf3d6557a5cbfa772b0560'
+         '28f1fc66cc59f9ede83bad8847b0428b'
+         '60ae103004543ad7bb14ccc43f7dc6b4'
+         'b3212105bc5342dacfe0b863f7c78f0e'
+         '4394d6e2e88eb0ebc15a459a5a69d9c1'
+         '8eada87c49b49894a77b63b53524113c'
+         'c028b9f2dc44887fe5cd46ca281ed546'
+         '967492547eab53832c12bd0933e2efd8'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -73,30 +58,23 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  git apply --whitespace=nowarn ../patch-${pkgver}
+  #git apply --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
   git apply ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
   git apply ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
   git apply ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
   git apply ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
-  git apply ../0005-arm64-dts-rockchip-fix-rk3328-roc-cc-gmac2io-stabili.patch
-  git apply ../0006-arm64-dts-rockchip-fix-rk3328-roc-cc-gmac2io-tx-rx_d.patch
-  git apply ../0007-arm64-dts-rockchip-set-TX-PBL-for-rk3328-roc-cc-gmac.patch
-  git apply ../0008-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
-  git apply ../0009-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
-  git apply ../0010-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch
-  git apply ../0011-arm64-dts-rockchip-give-some-life-to-the-rk3328-roc-.patch
-  git apply ../0012-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-  git apply ../0013-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch
-  git apply ../0014-arm64-dts-Remove-inconsistent-use-of-arm-armv8-compa.patch
-  git apply ../0015-clk-rockchip-fix-wrong-clock-definitions-for-rk3328.patch
-  git apply ../0016-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch
-  git apply ../0017-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch
-  git apply ../0018-arm64-dts-rockchip-move-rk3328-sound-dai-cells-to-th.patch
-  git apply ../0019-arm64-dts-rockchip-enable-analog-audio-node-for-rock.patch
-  git apply ../0020-arm64-dts-rockchip-add-rk3328-ACODEC-node.patch
-  git apply ../0021-arm64-dts-rockchip-add-spdif-sound-analog-audio-node.patch
+  git apply ../0005-arm64-dts-rockchip-set-TX-PBL-for-rk3328-roc-cc-gmac.patch
+  git apply ../0006-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
+  git apply ../0007-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
+  git apply ../0008-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch
+  git apply ../0009-arm64-dts-rockchip-give-some-life-to-the-rk3328-roc-.patch
+  git apply ../0010-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
+  git apply ../0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch
+  git apply ../0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch
+  git apply ../0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch
+  git apply ../0014-arm64-dts-rockchip-add-spdif-sound-analog-audio-node.patch
 
   cat "${srcdir}/config" > ./.config
 

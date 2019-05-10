@@ -1,7 +1,7 @@
-From 40d8b0ea7733ec450850f616bd5400562d8ba9c8 Mon Sep 17 00:00:00 2001
+From c6754fd02b02a16eface160386f55f5e4e07035f Mon Sep 17 00:00:00 2001
 From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
 Date: Thu, 18 Apr 2019 00:01:00 +0300
-Subject: [PATCH 07/21] arm64: dts: rockchip: set TX PBL for rk3328-roc-cc gmac
+Subject: [PATCH 05/14] arm64: dts: rockchip: set TX PBL for rk3328-roc-cc gmac
 
 Some rockchip boards have issues with tx checksumming for packets
 larger than 1498 B.
@@ -26,7 +26,7 @@ Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 0e34354b2..f666942f9 100644
+index 0e34354..f666942 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 @@ -104,10 +104,10 @@
