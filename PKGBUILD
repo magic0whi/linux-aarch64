@@ -7,7 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-5.1
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.1.2
+pkgver=5.1.5
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -35,7 +35,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
-         'b97834767f677858912db866e4e095ac'
+         '010a7425cb63f64c8122685d0c860f16'
          'dd94496f7718cb47dc0d633916ab9fd3'
          'c1265ed7e5a3d4431eff37b7e229c8c7'
          'd875eae528939e4b74b8b51d3de4a5c0'
