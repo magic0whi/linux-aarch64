@@ -1,4 +1,4 @@
-From 0673f5bd5644327df08ef9273cbcbf43bf00c0a2 Mon Sep 17 00:00:00 2001
+From e4076333540a892fd9942c1fc86d73605ba2b596 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sat, 2 Mar 2019 16:37:09 +0000
 Subject: [PATCH 13/14] arm64: dts: rockchip: enable HDMI CEC on rk3328
@@ -11,7 +11,7 @@ Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 23d48b4..c7f0845 100644
+index 23d48b49f..c7f084583 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 @@ -671,9 +671,11 @@

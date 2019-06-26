@@ -1,4 +1,4 @@
-From af2776f4bd1d139a7c25c437e71d6c09cb8bface Mon Sep 17 00:00:00 2001
+From 2e3cda90e1594a59e519bcdd23685a6952691d1f Mon Sep 17 00:00:00 2001
 From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
 Date: Thu, 4 Apr 2019 14:23:29 +0300
 Subject: [PATCH 12/14] arm64: dts: rockchip: eMMC additions for rk3328-roc-cc
@@ -15,15 +15,17 @@ https://www.loverpi.com/products/libre-computer-board-emmc-5-x-module
 This increases the speed of the eMMC significantly.
 
 Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
+[added supplies as suggested by Leonidas]
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index ecb98c4..8eff291 100644
+index 2ee091d14..c3e13f71e 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -132,6 +132,9 @@
+@@ -132,9 +132,14 @@
  &emmc {
  	bus-width = <8>;
  	cap-mmc-highspeed;
@@ -33,6 +35,11 @@ index ecb98c4..8eff291 100644
  	non-removable;
  	pinctrl-names = "default";
  	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
++	vmmc-supply = <&vcc_io>;
++	vqmmc-supply = <&vcc18_emmc>;
+ 	status = "okay";
+ };
+ 
 -- 
 2.21.0
 

@@ -1,4 +1,4 @@
-From 41e664d48ab1a5027f4560fd22af6399455db099 Mon Sep 17 00:00:00 2001
+From df83505c800f940f4d66266897e2b09515cf9e40 Mon Sep 17 00:00:00 2001
 From: popcornmix <popcornmix@gmail.com>
 Date: Tue, 18 Feb 2014 01:43:50 -0300
 Subject: [PATCH 01/14] net/smsc95xx: Allow mac address to be set as a
@@ -9,7 +9,7 @@ Subject: [PATCH 01/14] net/smsc95xx: Allow mac address to be set as a
  1 file changed, 56 insertions(+)
 
 diff --git a/drivers/net/usb/smsc95xx.c b/drivers/net/usb/smsc95xx.c
-index e3d0862..2eaae00 100644
+index e3d086268..2eaae00b4 100644
 --- a/drivers/net/usb/smsc95xx.c
 +++ b/drivers/net/usb/smsc95xx.c
 @@ -60,6 +60,7 @@

@@ -1,0 +1,106 @@
+From b4c5b3d4b02a37a06095110af7937749422822d0 Mon Sep 17 00:00:00 2001
+From: magic0whi <lollipop.studio.cn@gmail.com>
+Date: Wed, 26 Jun 2019 12:26:19 +0800
+Subject: [PATCH 14/14] arm64: dts: rockchip: add spdif sound & hdmi audio on
+ roc-rk3328-cc
+
+---
+ .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 61 +++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index c3e13f71e..f108d1f34 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -93,6 +93,50 @@
+ 		regulator-boot-on;
+ 	};
+ 
++	sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,mclk-fs = <256>;
++		simple-audio-card,name = "rockchip,rk3328";
++		simple-audio-card,cpu {
++			sound-dai = <&i2s1>;
++		};
++		simple-audio-card,codec {
++			sound-dai = <&codec>;
++		};
++	};
++
++	hdmi-sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,mclk-fs = <128>;
++		simple-audio-card,name = "rockchip,hdmi";
++		simple-audio-card,cpu {
++			sound-dai = <&i2s0>;
++		};
++		simple-audio-card,codec {
++			sound-dai = <&hdmi>;
++		};
++	};
++
++	spdif-sound {
++		status = "disabled";
++		compatible = "simple-audio-card";
++		simple-audio-card,name = "rockchip,spdif";
++		simple-audio-card,cpu {
++			sound-dai = <&spdif>;
++		};
++		simple-audio-card,codec {
++			sound-dai = <&spdif_out>;
++		};
++	};
++
++	spdif_out: spdif-out {
++	  status = "disabled";
++		compatible = "linux,spdif-dit";
++		#sound-dai-cells = <0>;
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		power {
+@@ -113,6 +157,10 @@
+ 	};
+ };
+ 
++&codec {
++	status = "okay";
++};
++
+ &cpu0 {
+ 	cpu-supply = <&vdd_arm>;
+ };
+@@ -279,6 +327,15 @@
+ 	};
+ };
+ 
++&i2s0 {
++	rockchip,bclk-fs = <128>;
++	status = "okay";
++};
++
++&i2s1 {
++	status = "okay";
++};
++
+ &io_domains {
+ 	status = "okay";
+ 
+@@ -328,6 +385,10 @@
+ 	status = "okay";
+ };
+ 
++&spdif {
++	status = "disabled";
++};
++
+ &tsadc {
+ 	status = "okay";
+ };
+-- 
+2.21.0
+

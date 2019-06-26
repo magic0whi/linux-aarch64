@@ -7,7 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-5.1
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.1.8
+pkgver=5.1.15
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -20,7 +20,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
         '0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
         '0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch'
-        '0005-arm64-dts-rockchip-set-TX-PBL-for-rk3328-roc-cc-gmac.patch'
+        '0005-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch'
         '0006-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
         '0007-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
         '0008-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch'
@@ -29,28 +29,28 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch'
         '0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch'
         '0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch'
-        '0014-arm64-dts-rockchip-add-spdif-sound-analog-audio-node.patch'
+        '0014-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
-         'd84015a7c260ae49a4d9939e711c3a82'
-         'dd94496f7718cb47dc0d633916ab9fd3'
-         'c1265ed7e5a3d4431eff37b7e229c8c7'
-         'd875eae528939e4b74b8b51d3de4a5c0'
-         'bd292169696c90897fb3db1477a8a9ea'
-         '2daf43ef575e2cfa261029d4c1dfd641'
-         'ccdc0e5c4e924963627c8af201a6a2f2'
-         '123de3dcbf079f551a4fe7bb6a39bb8b'
-         '014ec0e597cf3d6557a5cbfa772b0560'
-         '28f1fc66cc59f9ede83bad8847b0428b'
-         '60ae103004543ad7bb14ccc43f7dc6b4'
-         'b3212105bc5342dacfe0b863f7c78f0e'
-         '4394d6e2e88eb0ebc15a459a5a69d9c1'
-         '8eada87c49b49894a77b63b53524113c'
-         'c028b9f2dc44887fe5cd46ca281ed546'
-         'b071e19ef798cf8b9ee0eb2c45f73885'
+         'aed4686410e23561f67f5c512d0a6245'
+         'cd65f2f8c1d06b0dc07d1f4a3b8af245'
+         'f93104b10616efbffaaa68226de56485'
+         'aa051a8869b491b854dc52b3982d51fc'
+         '448c39c967c643577469d0d1c4045f0e'
+         'be8346372881fc63262b9bd6d3a70ec4'
+         'f49bfa7a2c5440470d975a3083b7c5fc'
+         '55b041d97ca8c308a2c99a80c32693f8'
+         'b9c9c4e393459d6f3b6f1da33a756e8f'
+         '6db8d2a30b79af3b69a6ab06213f7767'
+         'f90b95909fc50018c8bbdaba59763868'
+         'd00d87e30e460872dc2cd2282d894ca1'
+         'f1ed5a7c998e710856cf7c30ca5d59b5'
+         '956e5331de8423fafa4ed43da5b71e48'
+         '5174939a675408f239ed0976ae93d247'
+         'f44f3e8ef7f77322c7bf268af950eef4'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -66,7 +66,7 @@ prepare() {
   git apply ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
   git apply ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
   git apply ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
-  git apply ../0005-arm64-dts-rockchip-set-TX-PBL-for-rk3328-roc-cc-gmac.patch
+  git apply ../0005-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch
   git apply ../0006-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
   git apply ../0007-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
   git apply ../0008-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch
@@ -75,7 +75,7 @@ prepare() {
   git apply ../0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch
   git apply ../0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch
   git apply ../0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch
-  git apply ../0014-arm64-dts-rockchip-add-spdif-sound-analog-audio-node.patch
+  git apply ../0014-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
 
   cat "${srcdir}/config" > ./.config
 
