@@ -1,7 +1,7 @@
 From a39e1143b8b4e582142c4d3fc6bc5662b3c26e88 Mon Sep 17 00:00:00 2001
 From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
 Date: Fri, 1 Mar 2019 20:07:21 +0200
-Subject: [PATCH 11/14] arm64: dts: rockchip: add rk3328-roc-cc cpu-supply
+Subject: [PATCH 11/15] arm64: dts: rockchip: add rk3328-roc-cc cpu-supply
  entries for all cpu nodes
 
 In line with the rock64 dts, specify the cpu-supply
@@ -36,5 +36,5 @@ index 66b0e94b3..2ee091d14 100644
  	bus-width = <8>;
  	cap-mmc-highspeed;
 -- 
-2.21.0
+2.22.0
 

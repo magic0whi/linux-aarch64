@@ -1,7 +1,7 @@
 From e4076333540a892fd9942c1fc86d73605ba2b596 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sat, 2 Mar 2019 16:37:09 +0000
-Subject: [PATCH 13/14] arm64: dts: rockchip: enable HDMI CEC on rk3328
+Subject: [PATCH 13/15] arm64: dts: rockchip: enable HDMI CEC on rk3328
 
 This patch enables HDMI CEC on RK3328 devices
 
@@ -29,5 +29,5 @@ index 23d48b49f..c7f084583 100644
  		phy-names = "hdmi";
  		pinctrl-names = "default";
 -- 
-2.21.0
+2.22.0
 

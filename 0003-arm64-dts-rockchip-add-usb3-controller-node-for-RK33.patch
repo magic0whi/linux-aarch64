@@ -1,7 +1,7 @@
 From 71ba417483679b743d9ae70cf29d186ac5c4514b Mon Sep 17 00:00:00 2001
 From: William Wu <william.wu@rock-chips.com>
 Date: Mon, 4 Dec 2017 10:40:39 +0100
-Subject: [PATCH 03/14] arm64: dts: rockchip: add usb3 controller node for
+Subject: [PATCH 03/15] arm64: dts: rockchip: add usb3 controller node for
  RK3328 SoCs
 
 RK3328 has one USB 3.0 OTG controller which uses DWC_USB3
@@ -54,5 +54,5 @@ index dabef1a21..56e4a0649 100644
  		compatible = "arm,gic-400";
  		#interrupt-cells = <3>;
 -- 
-2.21.0
+2.22.0
 

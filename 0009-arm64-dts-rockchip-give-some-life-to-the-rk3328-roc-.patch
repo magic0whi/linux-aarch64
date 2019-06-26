@@ -1,7 +1,7 @@
 From 8fe9ce1282046cd130ad2a7e8cd10eb8574cec07 Mon Sep 17 00:00:00 2001
 From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
 Date: Sun, 3 Mar 2019 01:18:33 +0200
-Subject: [PATCH 09/14] arm64: dts: rockchip: give some life to the
+Subject: [PATCH 09/15] arm64: dts: rockchip: give some life to the
  rk3328-roc-cc leds
 
 Assign the LEDs to heartbeat and sdcard io, as in other RK boards.
@@ -45,5 +45,5 @@ index 9c4ed51a1..66b0e94b3 100644
  
  &cpu0 {
 -- 
-2.21.0
+2.22.0
 

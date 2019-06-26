@@ -30,26 +30,28 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch'
         '0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch'
         '0014-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
+	'0015-arm64-dts-rockchip-add-sound-dai-cells-to-HDMI-of-rk.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
          'aed4686410e23561f67f5c512d0a6245'
-         'cd65f2f8c1d06b0dc07d1f4a3b8af245'
-         'f93104b10616efbffaaa68226de56485'
-         'aa051a8869b491b854dc52b3982d51fc'
-         '448c39c967c643577469d0d1c4045f0e'
-         'be8346372881fc63262b9bd6d3a70ec4'
-         'f49bfa7a2c5440470d975a3083b7c5fc'
-         '55b041d97ca8c308a2c99a80c32693f8'
-         'b9c9c4e393459d6f3b6f1da33a756e8f'
-         '6db8d2a30b79af3b69a6ab06213f7767'
-         'f90b95909fc50018c8bbdaba59763868'
-         'd00d87e30e460872dc2cd2282d894ca1'
-         'f1ed5a7c998e710856cf7c30ca5d59b5'
-         '956e5331de8423fafa4ed43da5b71e48'
-         '5174939a675408f239ed0976ae93d247'
+         '2702c4bb01bef91b519a89c6c241340a'
+         '9ed275df0ce4ca1e5c68b5cfc45257bb'
+         '07ec98955a7243fdbfdb1e58561a18f0'
+         '751854084c81a3c05607e227f2c3349c'
+         '2ac66b3ba77a3e0efc62f33274655841'
+         'd3b22f26eb641e868e794c92332c6fd3'
+         'b31a2fd3fdda073ee1ca9de97273fcea'
+         '2e6d8431d079e3b1c6e665df867ecaff'
+         '3614fee91a5d3dd1ce1440fb7f1c207d'
+         '554132a0e76c8af0e204980dd2692baa'
+         '322be6b1c03981e6ba7d0d99d1af6684'
+         '199e30bc476ddde56e9861138321b2b9'
+         'd6dc74b9b4e9ba9af936adb27605d160'
+         '2e98b40f95ea6e6a63ba1df3e95b9ae1'
+         '831555cc1dd3a77096faae6be1f52d51'
          'f44f3e8ef7f77322c7bf268af950eef4'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -76,6 +78,7 @@ prepare() {
   git apply ../0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch
   git apply ../0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch
   git apply ../0014-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
+  git apply ../0015-arm64-dts-rockchip-add-sound-dai-cells-to-HDMI-of-rk.patch
 
   cat "${srcdir}/config" > ./.config
 

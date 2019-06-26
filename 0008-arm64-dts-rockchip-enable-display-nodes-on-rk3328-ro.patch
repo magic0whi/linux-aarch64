@@ -1,7 +1,7 @@
 From 01ac359b48b331bba776d429890b268c1efed287 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Wed, 1 May 2019 01:52:41 +0000
-Subject: [PATCH 08/14] arm64: dts: rockchip: enable display nodes on
+Subject: [PATCH 08/15] arm64: dts: rockchip: enable display nodes on
  rk3328-roc-cc
 
 Enable the necessary nodes to get output on the hdmi port of the board
@@ -41,5 +41,5 @@ index 481c3cac4..9c4ed51a1 100644
 +	status = "okay";
 +};
 -- 
-2.21.0
+2.22.0
 

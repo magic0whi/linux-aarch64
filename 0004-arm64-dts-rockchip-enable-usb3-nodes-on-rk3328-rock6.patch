@@ -1,7 +1,7 @@
 From 229780442849eeae21213388830d130b9803a2a5 Mon Sep 17 00:00:00 2001
 From: Heiko Stuebner <heiko@sntech.de>
 Date: Mon, 4 Dec 2017 10:40:41 +0100
-Subject: [PATCH 04/14] arm64: dts: rockchip: enable usb3 nodes on
+Subject: [PATCH 04/15] arm64: dts: rockchip: enable usb3 nodes on
  rk3328-rock64
 
 Enable the nodes to make the usb3 port usable on that board.
@@ -32,5 +32,5 @@ index 79b4d1d4b..57c874166 100644
  	status = "okay";
  };
 -- 
-2.21.0
+2.22.0
 

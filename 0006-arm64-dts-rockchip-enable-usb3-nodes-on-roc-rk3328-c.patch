@@ -1,7 +1,7 @@
 From a79fa96baa7ac090ed122dbbad981fc8f552278a Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Wed, 1 May 2019 01:47:47 +0000
-Subject: [PATCH 06/14] arm64: dts: rockchip: enable usb3 nodes on
+Subject: [PATCH 06/15] arm64: dts: rockchip: enable usb3 nodes on
  roc-rk3328-cc board
 
 ---
@@ -57,5 +57,5 @@ index 9963fe655..c077aed67 100644
 +	status = "okay";
 +};
 -- 
-2.21.0
+2.22.0
 
