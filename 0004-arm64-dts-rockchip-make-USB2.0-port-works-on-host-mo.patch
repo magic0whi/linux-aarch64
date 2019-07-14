@@ -1,18 +1,17 @@
-From 0d09228678ef99cc5d08aa01d1fa522e0c0b22d0 Mon Sep 17 00:00:00 2001
+From adaa342a4e0df77b33fd1d09fd6c44747802e1b9 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Tue, 30 Apr 2019 09:14:28 +0000
-Subject: [PATCH 07/15] arm64: dts: rockchip: make USB2.0 port works on host
- mode
+Subject: [PATCH 4/6] arm64: dts: rockchip: make USB2.0 port works on host mode
 
 ---
  arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index c077aed67..481c3cac4 100644
+index 10ca269ad..2bd0f53f5 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -305,6 +305,7 @@
+@@ -350,6 +350,7 @@
  };
  
  &usb20_otg {

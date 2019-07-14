@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64
-_srcname=linux-5.1
+_srcname=linux-5.2
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.1.15
+pkgver=5.2.0
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -15,44 +15,25 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
-        '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
-        '0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
-        '0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch'
-        '0005-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch'
-        '0006-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
-        '0007-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
-        '0008-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch'
-        '0009-arm64-dts-rockchip-give-some-life-to-the-rk3328-roc-.patch'
-        '0010-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
-        '0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch'
-        '0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch'
-        '0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch'
-        '0014-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
-	'0015-arm64-dts-rockchip-add-sound-dai-cells-to-HDMI-of-rk.patch'
+        #"http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        '0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
+        '0002-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch'
+        '0003-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
+        '0004-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
+        '0005-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
+        '0006-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
-         'aed4686410e23561f67f5c512d0a6245'
-         '2702c4bb01bef91b519a89c6c241340a'
-         '9ed275df0ce4ca1e5c68b5cfc45257bb'
-         '07ec98955a7243fdbfdb1e58561a18f0'
-         '751854084c81a3c05607e227f2c3349c'
-         '2ac66b3ba77a3e0efc62f33274655841'
-         'd3b22f26eb641e868e794c92332c6fd3'
-         'b31a2fd3fdda073ee1ca9de97273fcea'
-         '2e6d8431d079e3b1c6e665df867ecaff'
-         '3614fee91a5d3dd1ce1440fb7f1c207d'
-         '554132a0e76c8af0e204980dd2692baa'
-         '322be6b1c03981e6ba7d0d99d1af6684'
-         '199e30bc476ddde56e9861138321b2b9'
-         'd6dc74b9b4e9ba9af936adb27605d160'
-         '2e98b40f95ea6e6a63ba1df3e95b9ae1'
-         '831555cc1dd3a77096faae6be1f52d51'
-         'f44f3e8ef7f77322c7bf268af950eef4'
+md5sums=('ddf994de00d7b18395886dd9b30b9262'
+         '7e9daa4d4795b766d8f8298595417867'
+         '42c9a5ac60abf71266d426304a16688c'
+         '9d46d02ad8bd12c848fd8b4d24999333'
+         '65d5535959f551c87943342099cf175b'
+         '4e2568dcce610c5c590ae2d04fe1afc8'
+         '5aff57a17da52831f4de63421bfa32bc'
+         'fba8d78933a74f7c79f910d1e377499e'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -61,24 +42,15 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  git apply --whitespace=nowarn ../patch-${pkgver}
+  #git apply --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
-  git apply ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-  git apply ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-  git apply ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
-  git apply ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
-  git apply ../0005-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch
-  git apply ../0006-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
-  git apply ../0007-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
-  git apply ../0008-arm64-dts-rockchip-enable-display-nodes-on-rk3328-ro.patch
-  git apply ../0009-arm64-dts-rockchip-give-some-life-to-the-rk3328-roc-.patch
-  git apply ../0010-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-  git apply ../0011-arm64-dts-rockchip-add-rk3328-roc-cc-cpu-supply-entr.patch
-  git apply ../0012-arm64-dts-rockchip-eMMC-additions-for-rk3328-roc-cc.patch
-  git apply ../0013-arm64-dts-rockchip-enable-HDMI-CEC-on-rk3328.patch
-  git apply ../0014-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
-  git apply ../0015-arm64-dts-rockchip-add-sound-dai-cells-to-HDMI-of-rk.patch
+  git apply ../0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
+  git apply ../0002-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch
+  git apply ../0003-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
+  git apply ../0004-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
+  git apply ../0005-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
+  git apply ../0006-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
 
   cat "${srcdir}/config" > ./.config
 
