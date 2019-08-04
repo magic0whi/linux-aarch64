@@ -7,7 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-5.2
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.2.0
+pkgver=5.2.5
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -15,7 +15,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         '0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
         '0002-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch'
         '0003-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
@@ -27,13 +27,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('ddf994de00d7b18395886dd9b30b9262'
+         '0bfed20acab24d45232983b54339a3c9'
          '7e9daa4d4795b766d8f8298595417867'
          '42c9a5ac60abf71266d426304a16688c'
          '9d46d02ad8bd12c848fd8b4d24999333'
          '65d5535959f551c87943342099cf175b'
          '4e2568dcce610c5c590ae2d04fe1afc8'
          '5aff57a17da52831f4de63421bfa32bc'
-         'fba8d78933a74f7c79f910d1e377499e'
+         'dbe79108303e517df03aa35724518118'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -42,7 +43,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #git apply --whitespace=nowarn ../patch-${pkgver}
+  git apply --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
   git apply ../0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
