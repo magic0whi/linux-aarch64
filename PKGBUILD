@@ -22,18 +22,20 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0004-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
         '0005-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
         '0006-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
+        '0007-arm64-dts-rk805-enable-rtc-when-power-off.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('ddf994de00d7b18395886dd9b30b9262'
          '0bfed20acab24d45232983b54339a3c9'
-         '7e9daa4d4795b766d8f8298595417867'
-         '42c9a5ac60abf71266d426304a16688c'
-         '9d46d02ad8bd12c848fd8b4d24999333'
-         '65d5535959f551c87943342099cf175b'
-         '4e2568dcce610c5c590ae2d04fe1afc8'
-         '5aff57a17da52831f4de63421bfa32bc'
+         '8223f6a182505e1d8cc0f7da8ca91295'
+         'd6b3dc9d32884a9bacde6d416a137327'
+         '08b873d2e3fb171a11706b5f0292f14b'
+         '8554b7f58a2604dd1fcd10bdef0a9153'
+         '60347e4de9e8a0fec452ef3490bfd2a5'
+         '373ebb3edbaff0d95ac17b304ade8693'
+         '4e1e78794f7de534cd85f6e804ccc9ee'
          'dbe79108303e517df03aa35724518118'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -52,6 +54,7 @@ prepare() {
   git apply ../0004-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
   git apply ../0005-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
   git apply ../0006-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
+  git apply ../0007-arm64-dts-rk805-enable-rtc-when-power-off.patch
 
   cat "${srcdir}/config" > ./.config
 

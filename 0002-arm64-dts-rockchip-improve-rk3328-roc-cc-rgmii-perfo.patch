@@ -1,7 +1,7 @@
-From d97659bb519d32451f6c387fe39240ebdea932d4 Mon Sep 17 00:00:00 2001
+From 7a8234aebd116955f86009c4345d284d2e6df084 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Fri, 7 Jun 2019 12:37:32 +0000
-Subject: [PATCH 2/6] arm64: dts: rockchip: improve rk3328-roc-cc rgmii
+Subject: [PATCH 2/7] arm64: dts: rockchip: improve rk3328-roc-cc rgmii
  performance.
 
 Currently the rk3328-roc-cc ethernet is enabled using "snps,force_thresh_dma_mode".

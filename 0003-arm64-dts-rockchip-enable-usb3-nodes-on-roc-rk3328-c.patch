@@ -1,7 +1,7 @@
-From c9f43ea1f962a09d421173cee35e1d8b1db4620e Mon Sep 17 00:00:00 2001
+From 74e86d226f3e8792d7fe465ad6036d3c51391a48 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Wed, 1 May 2019 01:47:47 +0000
-Subject: [PATCH 3/6] arm64: dts: rockchip: enable usb3 nodes on roc-rk3328-cc
+Subject: [PATCH 3/7] arm64: dts: rockchip: enable usb3 nodes on roc-rk3328-cc
  board
 
 ---
