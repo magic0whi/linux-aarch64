@@ -1,7 +1,7 @@
-From be6c59834b761bc1f3540f122bc9cde64dedcbfc Mon Sep 17 00:00:00 2001
+From 5fafef01ba00913ce5cd41447e7869ec48d6dc65 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Wed, 26 Jun 2019 12:26:19 +0800
-Subject: [PATCH 6/7] arm64: dts: rockchip: add spdif sound & hdmi audio on
+Subject: [PATCH 5/6] arm64: dts: rockchip: add spdif sound & hdmi audio on
  roc-rk3328-cc
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 6/7] arm64: dts: rockchip: add spdif sound & hdmi audio on
  1 file changed, 61 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 2bd0f53f5..547cf7fbe 100644
+index ee13cfe1d..3edcc82c6 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 @@ -93,6 +93,50 @@
@@ -102,5 +102,5 @@ index 2bd0f53f5..547cf7fbe 100644
  	status = "okay";
  };
 -- 
-2.22.0
+2.23.0
 

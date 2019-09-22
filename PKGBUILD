@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64
-_srcname=linux-5.2
+_srcname=linux-5.3
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.2.5
+pkgver=5.3.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -17,26 +17,24 @@ options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         '0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
-        '0002-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch'
-        '0003-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
-        '0004-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
-        '0005-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
-        '0006-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
-        '0007-arm64-dts-rk805-enable-rtc-when-power-off.patch'
+        '0002-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
+        '0003-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
+        '0004-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
+        '0005-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
+        '0006-arm64-dts-rk805-enable-rtc-when-power-off.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('ddf994de00d7b18395886dd9b30b9262'
-         '0bfed20acab24d45232983b54339a3c9'
-         '8223f6a182505e1d8cc0f7da8ca91295'
-         'd6b3dc9d32884a9bacde6d416a137327'
-         '08b873d2e3fb171a11706b5f0292f14b'
-         '8554b7f58a2604dd1fcd10bdef0a9153'
-         '60347e4de9e8a0fec452ef3490bfd2a5'
-         '373ebb3edbaff0d95ac17b304ade8693'
-         '4e1e78794f7de534cd85f6e804ccc9ee'
-         'dbe79108303e517df03aa35724518118'
+md5sums=('c99feaade8047339528fb066ec5f8a49'
+         '476673d3ab1470fd9bac0da60774f3fd'
+         '97307fa0f1ec6aa603a5e5650dd15e5d'
+         '50cac8364df28f5a2780ca20746cc8e0'
+         'abf90f3e376f8e04d7907075f3e2e2a1'
+         '1ae4b1d2f597818e557ec3cdc5d711d7'
+         '331b75cf05a043beeed0aa9a847268c7'
+         '60cb3c10c584ab46304be8442f8505b2'
+         'c08bbd1d27a44b4ec25cc2d20d1b3be4'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -49,12 +47,11 @@ prepare() {
 
   # ALARM patches
   git apply ../0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
-  git apply ../0002-arm64-dts-rockchip-improve-rk3328-roc-cc-rgmii-perfo.patch
-  git apply ../0003-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
-  git apply ../0004-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
-  git apply ../0005-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-  git apply ../0006-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
-  git apply ../0007-arm64-dts-rk805-enable-rtc-when-power-off.patch
+  git apply ../0002-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
+  git apply ../0003-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
+  git apply ../0004-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
+  git apply ../0005-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
+  git apply ../0006-arm64-dts-rk805-enable-rtc-when-power-off.patch
 
   cat "${srcdir}/config" > ./.config
 
