@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64
-_srcname=linux-5.3
+_srcname=linux-5.4
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.3.7
+pkgver=5.4.2
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -22,19 +22,21 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0004-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
         '0005-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
         '0006-arm64-dts-rk805-enable-rtc-when-power-off.patch'
+        '0007-arm64-dts-rockchip-fix-sdmmc-detection-on-boot-on-rk.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('c99feaade8047339528fb066ec5f8a49'
-         '380185019ba22d3d2eac85b5678729bd'
-         '97307fa0f1ec6aa603a5e5650dd15e5d'
-         '50cac8364df28f5a2780ca20746cc8e0'
-         'abf90f3e376f8e04d7907075f3e2e2a1'
-         '1ae4b1d2f597818e557ec3cdc5d711d7'
-         '331b75cf05a043beeed0aa9a847268c7'
-         '60cb3c10c584ab46304be8442f8505b2'
-         '00f54a17917a0be008739653c3eeb939'
+md5sums=('ce9b2d974d27408a61c53a30d3f98fb9'
+         'debad4bcc336d83f6bff88aed8384038'
+         '12db50869f0f9e3423a47b9709895d93'
+         'ffa0cd34215f4c1c8897bff9d36672b9'
+         'da74256dd402d70deffffbd596413b3f'
+         'bed5aa31876ebca11c47ecab410e8356'
+         '0f6dfad39f6b02139aad031d0eda338e'
+         'b314f746e6f5733393fdeea50de0b3ee'
+         'beb9d1fb1cb2dd1c9190516253404a91'
+         'eeb820f66bd049ad1285d771639e094b'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -52,6 +54,7 @@ prepare() {
   git apply ../0004-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
   git apply ../0005-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
   git apply ../0006-arm64-dts-rk805-enable-rtc-when-power-off.patch
+  git apply ../0007-arm64-dts-rockchip-fix-sdmmc-detection-on-boot-on-rk.patch
 
   cat "${srcdir}/config" > ./.config
 
