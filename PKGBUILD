@@ -7,7 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-5.4
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.4.2
+pkgver=5.4.6
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -16,27 +16,35 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' '
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        '0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
-        '0002-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch'
-        '0003-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
-        '0004-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
-        '0005-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
-        '0006-arm64-dts-rk805-enable-rtc-when-power-off.patch'
-        '0007-arm64-dts-rockchip-fix-sdmmc-detection-on-boot-on-rk.patch'
+        '0001-phy-rockchip-add-inno-usb3-phy-driver.patch'
+        '0002-dt-bindings-clean-up-rockchip-grf-binding-document.patch'
+        '0003-Documentation-bindings-add-dt-documentation-for-rock.patch'
+        '0004-arm64-dts-rockchip-add-usb3-to-rk3328-devicetree.patch'
+        '0005-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc.patch'
+        '0006-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
+        '0007-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
+        '0008-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
+        '0009-arm64-dts-rk805-enable-rtc-when-power-off.patch'
+        '0010-arm64-dts-rockchip-fix-sdmmc-detection-on-boot-on-rk.patch'
+        '0011-media-hantro-Enable-H264-decoding-on-RK3328.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('ce9b2d974d27408a61c53a30d3f98fb9'
-         'debad4bcc336d83f6bff88aed8384038'
-         '12db50869f0f9e3423a47b9709895d93'
-         'ffa0cd34215f4c1c8897bff9d36672b9'
-         'da74256dd402d70deffffbd596413b3f'
-         'bed5aa31876ebca11c47ecab410e8356'
-         '0f6dfad39f6b02139aad031d0eda338e'
-         'b314f746e6f5733393fdeea50de0b3ee'
-         'beb9d1fb1cb2dd1c9190516253404a91'
-         'eeb820f66bd049ad1285d771639e094b'
+         '9f348b83af2fd13db31b7595aded4846'
+         'deb3301ccd8551af093292b77e60024a'
+         'd2275533c0fc5253fea8f0a2b25c5ab7'
+         '0f50151cec3d5cb09a623b01b5e8c934'
+         '6d242c9c9e809be7f453ee523ef63444'
+         'faf38b4d9680ab19160921fd595965ed'
+         '4a0826b0c90e29e6f6dcbceddda433f9'
+         '4bc0dd67fb5de64c9b8a52eefe7b9ff3'
+         '4d95e8fb553dc3fa2a58532732285418'
+         '3acef8724906e173e54c39b62403e75b'
+         '1dedfa5305de7a7503e49afde2d98f57'
+         '4c930079416d645a64b1403b9152c6df'
+         '8e85712de34751742beb81a1485f0684'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -48,13 +56,17 @@ prepare() {
   git apply --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
-  git apply ../0001-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
-  git apply ../0002-arm64-dts-rockchip-enable-usb3-nodes-on-roc-rk3328-c.patch
-  git apply ../0003-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
-  git apply ../0004-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-  git apply ../0005-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
-  git apply ../0006-arm64-dts-rk805-enable-rtc-when-power-off.patch
-  git apply ../0007-arm64-dts-rockchip-fix-sdmmc-detection-on-boot-on-rk.patch
+  git apply ../0001-phy-rockchip-add-inno-usb3-phy-driver.patch
+  git apply ../0002-dt-bindings-clean-up-rockchip-grf-binding-document.patch
+  git apply ../0003-Documentation-bindings-add-dt-documentation-for-rock.patch
+  git apply ../0004-arm64-dts-rockchip-add-usb3-to-rk3328-devicetree.patch
+  git apply ../0005-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc.patch
+  git apply ../0006-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
+  git apply ../0007-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
+  git apply ../0008-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
+  git apply ../0009-arm64-dts-rk805-enable-rtc-when-power-off.patch
+  git apply ../0010-arm64-dts-rockchip-fix-sdmmc-detection-on-boot-on-rk.patch
+  git apply ../0011-media-hantro-Enable-H264-decoding-on-RK3328.patch
 
   cat "${srcdir}/config" > ./.config
 

@@ -1,0 +1,34 @@
+From dcdc3c80684c26c3ad4f846ed5025dae1e56c5e8 Mon Sep 17 00:00:00 2001
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Mon, 28 Oct 2019 18:22:51 +0000
+Subject: [PATCH 02/11] dt-bindings: clean up rockchip grf binding document
+
+Fixup some typos and inconsistencies in the grf binding.
+
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ Documentation/devicetree/bindings/soc/rockchip/grf.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.txt b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
+index 46e27cd69..1456240cc 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.txt
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
+@@ -27,11 +27,11 @@ Required Properties:
+    - "rockchip,px30-pmugrf", "syscon": for px30
+    - "rockchip,rk3368-pmugrf", "syscon": for rk3368
+    - "rockchip,rk3399-pmugrf", "syscon": for rk3399
+-- compatible: SGRF should be one of the following
++- compatible: SGRF should be one of the following:
+    - "rockchip,rk3288-sgrf", "syscon": for rk3288
+-- compatible: USB2PHYGRF should be one of the followings
++- compatible: USB2PHYGRF should be one of the following:
+    - "rockchip,rk3328-usb2phy-grf", "syscon": for rk3328
+-- compatible: USBGRF should be one of the following
++- compatible: USBGRF should be one of the following:
+    - "rockchip,rv1108-usbgrf", "syscon": for rv1108
+ - reg: physical base address of the controller and length of memory mapped
+   region.
+-- 
+2.24.1
+
