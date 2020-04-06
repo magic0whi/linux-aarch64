@@ -1,7 +1,7 @@
-From e7e761399e7bd4590cd7069c8fe630f4e6640d5b Mon Sep 17 00:00:00 2001
+From c50c5b853fb648cc1de28e35b080bd3126f99de5 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 28 Oct 2019 18:22:53 +0000
-Subject: [PATCH 04/11] arm64: dts: rockchip: add usb3 to rk3328 devicetree
+Subject: [PATCH 03/10] arm64: dts: rockchip: add usb3 to rk3328 devicetree
 
 Now that we have a proper phy driver, we can add the requisite bits to the
 rk3328 device tree.
@@ -13,10 +13,10 @@ Signed-off-by: Peter Geis <pgwipeout@gmail.com>
  1 file changed, 72 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 31cc1541f..072e988ad 100644
+index 1f53ead52..1a86ee0a3 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -805,6 +805,47 @@
+@@ -854,6 +854,47 @@ u2phy_host: host-port {
  		};
  	};
  
@@ -61,10 +61,10 @@ index 31cc1541f..072e988ad 100644
 +		};
 +	};
 +
- 	sdmmc: dwmmc@ff500000 {
+ 	sdmmc: mmc@ff500000 {
  		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
  		reg = <0x0 0xff500000 0x0 0x4000>;
-@@ -936,6 +977,37 @@
+@@ -985,6 +1026,37 @@ usb_host0_ohci: usb@ff5d0000 {
  		status = "disabled";
  	};
  
@@ -103,5 +103,5 @@ index 31cc1541f..072e988ad 100644
  		compatible = "arm,gic-400";
  		#interrupt-cells = <3>;
 -- 
-2.24.1
+2.26.0
 

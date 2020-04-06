@@ -1,7 +1,7 @@
-From bdd770317069ff3af69a3ae1799657524a1c3d32 Mon Sep 17 00:00:00 2001
+From b4a1b3f232ede9e5ff783a7afea79da6bc8f649e Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 28 Oct 2019 18:22:52 +0000
-Subject: [PATCH 03/11] Documentation: bindings: add dt documentation for
+Subject: [PATCH 02/10] Documentation: bindings: add dt documentation for
  rockchip usb3 phy
 
 Add devicetree bindings for inno-usb3-phy.
@@ -178,10 +178,10 @@ index 000000000..f4f286251
 +	};
 +};
 diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.txt b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
-index 1456240cc..34656b0e8 100644
+index f96511aa3..bb15ced9c 100644
 --- a/Documentation/devicetree/bindings/soc/rockchip/grf.txt
 +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
-@@ -33,6 +33,8 @@ Required Properties:
+@@ -45,6 +45,8 @@ Required Properties:
     - "rockchip,rk3328-usb2phy-grf", "syscon": for rk3328
  - compatible: USBGRF should be one of the following:
     - "rockchip,rv1108-usbgrf", "syscon": for rv1108
@@ -218,5 +218,5 @@ index c8c4b00ec..7ac8b748b 100644
  Example device nodes:
  
 -- 
-2.24.1
+2.26.0
 

@@ -1,0 +1,10 @@
+*
+!/*.patch
+!/60-linux.hook
+!/90-linux.hook
+!/config
+!/linux.preset
+!/linux-aarch64.install
+!/PKGBUILD
+!/README.md
+!/.gitignore

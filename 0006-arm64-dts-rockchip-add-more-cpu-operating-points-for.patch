@@ -1,7 +1,7 @@
-From 4759d02b9b24c03c1d62e66c5f6534736866e23e Mon Sep 17 00:00:00 2001
+From aefaeaa2302268e84f993276a0d5fb1dd3759932 Mon Sep 17 00:00:00 2001
 From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
 Date: Fri, 1 Mar 2019 19:54:53 +0200
-Subject: [PATCH 07/11] arm64: dts: rockchip: add more cpu operating points for
+Subject: [PATCH 06/10] arm64: dts: rockchip: add more cpu operating points for
  RK3328
 
 This allows for greater max frequency on rk3328 boards,
@@ -21,10 +21,10 @@ Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
  1 file changed, 14 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 072e988ad..e79828d42 100644
+index 1a86ee0a3..e4cda9c77 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -123,6 +123,20 @@
+@@ -140,6 +140,20 @@ opp-1296000000 {
  			opp-microvolt = <1300000>;
  			clock-latency-ns = <40000>;
  		};
@@ -46,5 +46,5 @@ index 072e988ad..e79828d42 100644
  
  	amba {
 -- 
-2.24.1
+2.26.0
 

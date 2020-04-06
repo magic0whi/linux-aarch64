@@ -1,7 +1,7 @@
-From 23ab5ccf87fa9524cf56a5468c76def8c4644ecc Mon Sep 17 00:00:00 2001
+From 8ad9100aa14ad62d4fbef27c2a9596ccfa98b1da Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 28 Oct 2019 18:22:50 +0000
-Subject: [PATCH 01/11] phy: rockchip: add inno-usb3 phy driver
+Subject: [PATCH 01/10] phy: rockchip: add inno-usb3 phy driver
 
 Add the rockchip innosilicon usb3 phy driver, supporting devices such as the rk3328.
 Pulled from:
@@ -16,7 +16,7 @@ Signed-off-by: Peter Geis <pgwipeout@gmail.com>
  create mode 100644 drivers/phy/rockchip/phy-rockchip-inno-usb3.c
 
 diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-index c454c90cd..766407939 100644
+index 0824b9dd5..fdbd424f0 100644
 --- a/drivers/phy/rockchip/Kconfig
 +++ b/drivers/phy/rockchip/Kconfig
 @@ -35,6 +35,15 @@ config PHY_ROCKCHIP_INNO_USB2
@@ -32,15 +32,15 @@ index c454c90cd..766407939 100644
 +	help
 +	  Support for Rockchip USB 3.0 PHY with Innosilicon IP block.
 +
- config PHY_ROCKCHIP_PCIE
- 	tristate "Rockchip PCIe PHY Driver"
- 	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
+ config PHY_ROCKCHIP_INNO_DSIDPHY
+ 	tristate "Rockchip Innosilicon MIPI/LVDS/TTL PHY driver"
+ 	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
 diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
-index fd21cbaf4..d7b3d16c1 100644
+index 9f59a81e4..02cd208e8 100644
 --- a/drivers/phy/rockchip/Makefile
 +++ b/drivers/phy/rockchip/Makefile
-@@ -3,6 +3,7 @@ obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
- obj-$(CONFIG_PHY_ROCKCHIP_EMMC)		+= phy-rockchip-emmc.o
+@@ -4,6 +4,7 @@ obj-$(CONFIG_PHY_ROCKCHIP_EMMC)		+= phy-rockchip-emmc.o
+ obj-$(CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY)	+= phy-rockchip-inno-dsidphy.o
  obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
  obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
 +obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB3)	+= phy-rockchip-inno-usb3.o
@@ -1161,5 +1161,5 @@ index 000000000..31fee8f3a
 +MODULE_DESCRIPTION("Rockchip USB 3.0 PHY driver");
 +MODULE_LICENSE("GPL v2");
 -- 
-2.24.1
+2.26.0
 
