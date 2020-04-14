@@ -26,6 +26,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0008-arm64-dts-rk805-enable-rtc-when-power-off.patch'
         '0009-media-hantro-Enable-H264-decoding-on-RK3328.patch'
         '0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch'
+        '0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -42,7 +43,8 @@ md5sums=('7b9199ec5fa563ece9ed585ffb17798f'
          '57509527322c5c4322fd0798fba5ccf7'
          '205d69edda36324264b23189a210c10e'
          '9aa23a5691960a1c7920ffb9c90e5493'
-         '2580aeaebedb255a9220f85c266bb8e1'
+         '3ef84bf011a57536d50fd611928e969f'
+         'c0a43f5ddf40dc1c287bca1c8f94701c'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -64,6 +66,7 @@ prepare() {
   git apply ../0008-arm64-dts-rk805-enable-rtc-when-power-off.patch
   git apply ../0009-media-hantro-Enable-H264-decoding-on-RK3328.patch
   git apply ../0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch
+  git apply ../0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch
 
   cat "${srcdir}/config" > ./.config
 

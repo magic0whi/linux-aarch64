@@ -1,0 +1,41 @@
+From bafab083fc26cda8c40bd80ae251ea23e56e5a2d Mon Sep 17 00:00:00 2001
+From: magic0whi <lollipop.studio.cn@gmail.com>
+Date: Tue, 14 Apr 2020 07:48:41 +0000
+Subject: [PATCH] arm64: dts: rockchip: roc-rk3328-cc: enable w1-gpio
+
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index a52ef4abd..887849795 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -146,6 +146,14 @@ user {
+ 			mode = <0x05>;
+ 		};
+ 	};
++
++	onewire {
++		compatible = "w1-gpio";
++		pinctrl-names = "default";
++		pinctrl-0 = <&w1_gpio_pins>;
++		gpios = <&gpio0 17 0>;
++		status = "okay";
++	};
+ };
+ 
+ &codec {
+@@ -355,6 +363,9 @@ usb20_host_drv: usb20-host-drv {
+ 			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++	w1_gpio_pins: w1-gpio@0 {
++			rockchip,pins = <0 17 0 &pcfg_pull_up>;
++	};
+ };
+ 
+ &sdmmc {
+-- 
+2.26.0
+
