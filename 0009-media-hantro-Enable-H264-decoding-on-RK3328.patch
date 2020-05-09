@@ -1,7 +1,7 @@
-From 499aa14434c2c8102756744f5d06cd7a171bc708 Mon Sep 17 00:00:00 2001
+From 729567a1fe1220e227e3c3d8061ac476a88522ea Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 1 Sep 2019 12:45:49 +0000
-Subject: [PATCH 09/10] media: hantro: Enable H264 decoding on RK3328
+Subject: [PATCH 09/12] media: hantro: Enable H264 decoding on RK3328
 
 RK3328 SoC has the same decoder IP block as RK3399,
 lets enable H264 decoding on RK3328.

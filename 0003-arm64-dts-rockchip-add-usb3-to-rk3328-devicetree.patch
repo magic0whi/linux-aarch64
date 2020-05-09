@@ -1,7 +1,7 @@
-From c50c5b853fb648cc1de28e35b080bd3126f99de5 Mon Sep 17 00:00:00 2001
+From 95457cd2de702996fccd6b0cce963b545aad1dbd Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 28 Oct 2019 18:22:53 +0000
-Subject: [PATCH 03/10] arm64: dts: rockchip: add usb3 to rk3328 devicetree
+Subject: [PATCH 03/12] arm64: dts: rockchip: add usb3 to rk3328 devicetree
 
 Now that we have a proper phy driver, we can add the requisite bits to the
 rk3328 device tree.

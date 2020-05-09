@@ -1,7 +1,7 @@
-From 8ad9100aa14ad62d4fbef27c2a9596ccfa98b1da Mon Sep 17 00:00:00 2001
+From 8f108ec18540ff349d4ff6e580e2cd9dad390bd1 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 28 Oct 2019 18:22:50 +0000
-Subject: [PATCH 01/10] phy: rockchip: add inno-usb3 phy driver
+Subject: [PATCH 01/12] phy: rockchip: add inno-usb3 phy driver
 
 Add the rockchip innosilicon usb3 phy driver, supporting devices such as the rk3328.
 Pulled from:

@@ -7,7 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-5.6
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.6.4
+pkgver=5.6.11
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -26,25 +26,27 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0008-arm64-dts-rk805-enable-rtc-when-power-off.patch'
         '0009-media-hantro-Enable-H264-decoding-on-RK3328.patch'
         '0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch'
-        '0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
+	'0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
+	'0012-media-rockchip-Add-the-rkvdec-driver.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('7b9199ec5fa563ece9ed585ffb17798f'
-         '45d7aff0cb600805973745848fd35908'
-         '1204c1793157bc343a085fd96176eef6'
-         '8a3fd510330415e2852c202dbd4f7e72'
-         '023f3c5fc75a29ab3756412ac74f35d2'
-         '9dc571a7701b7b5dd44c6ff9cac1347c'
-         '34deecb945dd8f4610572363b45935ca'
-         '3189d6c6203e0320041ac8f0b7e7b307'
-         '814debaaf13333ddef345a55ac241980'
-         '57509527322c5c4322fd0798fba5ccf7'
-         '205d69edda36324264b23189a210c10e'
-         '9aa23a5691960a1c7920ffb9c90e5493'
-         'b89e734b0d3c850998bb4e0151688181'
-         'c0a43f5ddf40dc1c287bca1c8f94701c'
+         '6ec547919a5f233ab7ec018e5bc966a5'
+         '0fe07e75fac2cbc435b817d069524fb7'
+         'b1622e09acaf5fa7f82dc95eb72c1ea1'
+         '5eae7f0621f09096594d2491f7a9f706'
+         'abf0a0ec9b144e65ffd4bf3ba7c38161'
+         '2326ae4bff37ea1f300ed77170a368c6'
+         '2d0e9594159a6dac3d2e2d62e7633e50'
+         '737917020ae2f17caf5ef2dedf61fe33'
+         '8a3394582324881bc98f649681c96a16'
+         '01b9f69e0b59db10da3b38cf3c4e44e4'
+         'aeadda68243129a8dde991f79a1bb494'
+         '52e137f1189d946f208c3ac78febb36a'
+         '99c14c7279cde7248cf69d4c03d21ade'
+         '6bce1896cf5bc5e0ed7cd22483363689'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -67,6 +69,7 @@ prepare() {
   git apply ../0009-media-hantro-Enable-H264-decoding-on-RK3328.patch
   git apply ../0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch
   git apply ../0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch
+  git apply ../0012-media-rockchip-Add-the-rkvdec-driver.patch
 
   cat "${srcdir}/config" > ./.config
 

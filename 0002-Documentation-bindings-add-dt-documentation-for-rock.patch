@@ -1,7 +1,7 @@
-From b4a1b3f232ede9e5ff783a7afea79da6bc8f649e Mon Sep 17 00:00:00 2001
+From 57800b309233274f3f2e9909b4b5030eda98d7d4 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 28 Oct 2019 18:22:52 +0000
-Subject: [PATCH 02/10] Documentation: bindings: add dt documentation for
+Subject: [PATCH 02/12] Documentation: bindings: add dt documentation for
  rockchip usb3 phy
 
 Add devicetree bindings for inno-usb3-phy.
