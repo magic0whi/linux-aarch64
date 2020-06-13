@@ -1,7 +1,7 @@
-From fe58ce5d212de893ec561c25f9a4ac6b6fda6ca4 Mon Sep 17 00:00:00 2001
+From 6dc525494438091c1ca4975f301aa2aa832b1fe5 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Tue, 6 Aug 2019 03:17:15 +0000
-Subject: [PATCH 08/12] arm64: dts: rk805 enable rtc when power off
+Subject: [PATCH 08/17] arm64: dts: rk805 enable rtc when power off
 
 ---
  arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 4 ++++
@@ -23,5 +23,5 @@ index 71611a8ab..a52ef4abd 100644
  			vdd_logic: DCDC_REG1 {
  				regulator-name = "vdd_logic";
 -- 
-2.26.0
+2.27.0
 

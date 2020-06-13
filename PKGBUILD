@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64
-_srcname=linux-5.6
+_srcname=linux-5.7
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.6.12
+pkgver=5.7.2
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -26,27 +26,37 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0008-arm64-dts-rk805-enable-rtc-when-power-off.patch'
         '0009-media-hantro-Enable-H264-decoding-on-RK3328.patch'
         '0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch'
-	'0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
-	'0012-media-rockchip-Add-the-rkvdec-driver.patch'
+        '0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
+        '0012-media-v4l2-core-Add-helpers-to-build-the-H264-P-B0-B.patch'
+        '0013-media-hantro-h264-Use-the-generic-H264-reflist-build.patch'
+        '0014-media-dt-bindings-rockchip-Document-RK3399-Video-Dec.patch'
+        '0015-media-rkvdec-Add-the-rkvdec-driver.patch'
+        '0016-arm64-dts-rockchip-rk3399-Define-the-rockchip-Video-.patch'
+        '0017-arm64-dts-rockchip-rk3328-Define-the-rockchip-Video-.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('7b9199ec5fa563ece9ed585ffb17798f'
-         '7527e6e4f58d925a3b04779c0e6f5000'
-         '0fe07e75fac2cbc435b817d069524fb7'
-         'b1622e09acaf5fa7f82dc95eb72c1ea1'
-         '5eae7f0621f09096594d2491f7a9f706'
-         'abf0a0ec9b144e65ffd4bf3ba7c38161'
-         '2326ae4bff37ea1f300ed77170a368c6'
-         '2d0e9594159a6dac3d2e2d62e7633e50'
-         '737917020ae2f17caf5ef2dedf61fe33'
-         '8a3394582324881bc98f649681c96a16'
-         '01b9f69e0b59db10da3b38cf3c4e44e4'
-         'aeadda68243129a8dde991f79a1bb494'
-         '52e137f1189d946f208c3ac78febb36a'
-         '99c14c7279cde7248cf69d4c03d21ade'
-         'a257b66e95a89998e6b7012e96a70a6c'
+md5sums=('f63ed18935914e1ee3e04c2a0ce1ba3b'
+         '7dbd8df264550584e43dfc512c2b9acd'
+         'e6b2857dd7c5952ae11f4c313859163e'
+         '20539185fd201c71065647f044bda4be'
+         'a344f6e36f2263404eae65ae155a79d0'
+         'a28d0fafd49b2e7076afde532449cb06'
+         '3862b06b6a5884efaae430defc44ef7d'
+         'c6f2b7be95850fed8d5513cb68492a11'
+         '48e27dba71bf8fbf70111376af2dff07'
+         'c51269c658e6277ce26f5e4f85a78ab5'
+         '0fd178aaaf90f61cb480901ff2c19617'
+         'acb023fe6cd33441959cac7e798e841b'
+         'ed1a7f185b4424ecb7fe69c50f221044'
+         '684575e8bca1c42b8ed19c698a54c010'
+         '5f004dbe31e643d162c3a4c00d1e99a9'
+         'fe1c41ddd4a62b4047f4c30cc74d3bce'
+         'e4a95ba4e61bbca15f89ba0ff29c3be8'
+         'da7f73b40481b785f5e895b56034fcd9'
+         'f9195967cfc8a9d8a5a62172050ef770'
+         '0f8eef9622509067eb0fc500d865f266'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -69,7 +79,12 @@ prepare() {
   git apply ../0009-media-hantro-Enable-H264-decoding-on-RK3328.patch
   git apply ../0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch
   git apply ../0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch
-  git apply ../0012-media-rockchip-Add-the-rkvdec-driver.patch
+  git apply ../0012-media-v4l2-core-Add-helpers-to-build-the-H264-P-B0-B.patch
+  git apply ../0013-media-hantro-h264-Use-the-generic-H264-reflist-build.patch
+  git apply ../0014-media-dt-bindings-rockchip-Document-RK3399-Video-Dec.patch
+  git apply ../0015-media-rkvdec-Add-the-rkvdec-driver.patch
+  git apply ../0016-arm64-dts-rockchip-rk3399-Define-the-rockchip-Video-.patch
+  git apply ../0017-arm64-dts-rockchip-rk3328-Define-the-rockchip-Video-.patch
 
   cat "${srcdir}/config" > ./.config
 

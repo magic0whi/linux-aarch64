@@ -1,7 +1,7 @@
-From 57800b309233274f3f2e9909b4b5030eda98d7d4 Mon Sep 17 00:00:00 2001
+From da73a4e6df63ea5775ebbd5a4697159547b4702f Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 28 Oct 2019 18:22:52 +0000
-Subject: [PATCH 02/12] Documentation: bindings: add dt documentation for
+Subject: [PATCH 02/17] Documentation: bindings: add dt documentation for
  rockchip usb3 phy
 
 Add devicetree bindings for inno-usb3-phy.
@@ -10,8 +10,8 @@ Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
  .../bindings/phy/phy-rockchip-inno-usb3.yaml  | 157 ++++++++++++++++++
  .../devicetree/bindings/soc/rockchip/grf.txt  |   2 +
- .../devicetree/bindings/usb/rockchip,dwc3.txt |   9 +-
- 3 files changed, 165 insertions(+), 3 deletions(-)
+ .../devicetree/bindings/usb/rockchip,dwc3.txt |   4 +
+ 3 files changed, 163 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb3.yaml
 
 diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb3.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb3.yaml
@@ -191,32 +191,24 @@ index f96511aa3..bb15ced9c 100644
    region.
  
 diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-index c8c4b00ec..7ac8b748b 100644
+index 945204932..82120c752 100644
 --- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
 +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-@@ -1,7 +1,9 @@
- Rockchip SuperSpeed DWC3 USB SoC controller
- 
- Required properties:
--- compatible:	should contain "rockchip,rk3399-dwc3" for rk3399 SoC
-+- compatible:	should be one of the listed compatibles:
-+  - "rockchip,rk3328-dwc3" , "rockchip,rk3399-dwc3"	for rk3328 SoC
-+  - "rockchip,rk3399-dwc3" 				for rk3399 SoC
- - clocks:	A list of phandle + clock-specifier pairs for the
- 		clocks listed in clock-names
- - clock-names:	Should contain the following:
-@@ -16,8 +18,9 @@ A child node must exist to represent the core DWC3 IP block. The name of
- the node is not important. The content of the node is defined in dwc3.txt.
+@@ -17,6 +17,7 @@ the node is not important. The content of the node is defined in dwc3.txt.
  
  Phy documentation is provided in the following places:
--Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt - USB2.0 PHY
--Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt     - Type-C PHY
-+Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt  - USB2.0 PHY
+ Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml - USB2.0 PHY
 +Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb3.yaml - USB3.0 PHY
-+Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt      - Type-C PHY
+ Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt     - Type-C PHY
  
  Example device nodes:
- 
+@@ -54,3 +55,6 @@ Example device nodes:
+ 			dr_mode = "otg";
+ 		};
+ 	};
++ode = "otg";
++		};
++	};
 -- 
-2.26.0
+2.27.0
 

@@ -1,7 +1,7 @@
-From 83a883626def335e8f2ce08128d8f21e52826ae0 Mon Sep 17 00:00:00 2001
+From d77e6ec4b23116ec11d782a0e11bd255d966d4af Mon Sep 17 00:00:00 2001
 From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
 Date: Fri, 1 Mar 2019 19:54:53 +0200
-Subject: [PATCH 06/12] arm64: dts: rockchip: add more cpu operating points for
+Subject: [PATCH 06/17] arm64: dts: rockchip: add more cpu operating points for
  RK3328
 
 This allows for greater max frequency on rk3328 boards,
@@ -21,7 +21,7 @@ Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
  1 file changed, 14 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 1a86ee0a3..e4cda9c77 100644
+index aac9feff6..8268298b3 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 @@ -140,6 +140,20 @@ opp-1296000000 {
@@ -30,21 +30,21 @@ index 1a86ee0a3..e4cda9c77 100644
  		};
 +		opp-1392000000 {
 +			opp-hz = /bits/ 64 <1392000000>;
-+			opp-microvolt = <1350000 1350000 1350000>;
-+			opp-microvolt-L0 = <1350000 1350000 1350000>;
-+			opp-microvolt-L1 = <1325000 1325000 1325000>;
++			opp-microvolt = <1350000>;
++			opp-microvolt-L0 = <1350000>;
++			opp-microvolt-L1 = <1325000>;
 +			clock-latency-ns = <40000>;
 +		};
 +		opp-1512000000 {
 +			opp-hz = /bits/ 64 <1512000000>;
-+			opp-microvolt = <1450000 1450000 1450000>;
-+			opp-microvolt-L0 = <1450000 1450000 1450000>;
-+			opp-microvolt-L1 = <1425000 1425000 1425000>;
++			opp-microvolt = <1450000>;
++			opp-microvolt-L0 = <1450000>;
++			opp-microvolt-L1 = <1425000>;
 +			clock-latency-ns = <40000>;
-+		};
++	};
  	};
  
- 	amba {
+ 	amba: bus {
 -- 
-2.26.0
+2.27.0
 

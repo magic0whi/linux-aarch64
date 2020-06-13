@@ -1,7 +1,7 @@
-From 3a63d6c3ee661aa49668b6b9509be06b8d76854c Mon Sep 17 00:00:00 2001
+From a6a22fa65736ac14f8e499dcf428d3b44bcc7d6c Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Sat, 9 May 2020 10:21:19 +0000
-Subject: [PATCH 11/12] arm64: dts: rockchip: roc-rk3328-cc: enable w1-gpio
+Subject: [PATCH 11/17] arm64: dts: rockchip: roc-rk3328-cc: enable w1-gpio
 
 ---
  arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 13 +++++++++++++
@@ -39,5 +39,5 @@ index a52ef4abd..78addb146 100644
  
  &sdmmc {
 -- 
-2.26.0
+2.27.0
 
