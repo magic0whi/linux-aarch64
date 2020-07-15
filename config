@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.7.2 Kernel Configuration
+# Linux/arm64 5.7.8-1 Kernel Configuration
 #
 
 #
@@ -593,6 +593,7 @@ CONFIG_EFI_BOOTLOADER_CONTROL=y
 # end of EFI (Extensible Firmware Interface) Support
 
 CONFIG_EFI_EARLYCON=y
+CONFIG_EFI_CUSTOM_SSDT_OVERLAYS=y
 # CONFIG_IMX_DSP is not set
 CONFIG_IMX_SCU=y
 CONFIG_IMX_SCU_PD=y
@@ -2949,7 +2950,11 @@ CONFIG_RTL_CARDS=m
 # CONFIG_RTL8188EE is not set
 # CONFIG_RTL8192EE is not set
 # CONFIG_RTL8821AE is not set
-# CONFIG_RTL8192CU is not set
+CONFIG_RTL8192CU=m
+CONFIG_RTLWIFI=m
+CONFIG_RTLWIFI_USB=m
+CONFIG_RTLWIFI_DEBUG=y
+CONFIG_RTL8192C_COMMON=m
 # CONFIG_RTL8XXXU is not set
 # CONFIG_RTW88 is not set
 CONFIG_WLAN_VENDOR_RSI=y
