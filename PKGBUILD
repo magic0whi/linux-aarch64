@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64
-_srcname=linux-5.7
+_srcname=linux-5.8
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.7.8
+pkgver=5.8.7
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -37,8 +37,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('f63ed18935914e1ee3e04c2a0ce1ba3b'
-         '28fd3a3891a4863a70d4f579fb69e478'
+md5sums=('0e5c4c15266218ef26c50fac0016095b'
+         '91663a89a7bbb70a35999a0a807f581f'
          'e6b2857dd7c5952ae11f4c313859163e'
          '20539185fd201c71065647f044bda4be'
          'a344f6e36f2263404eae65ae155a79d0'
@@ -132,7 +132,7 @@ _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('kernel26' "linux=${pkgver}")
+  provides=("linux=${pkgver}" "WIREGUARD-MODULE")
   replaces=('linux-armv8')
   conflicts=('linux')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
