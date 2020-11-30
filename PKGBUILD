@@ -32,25 +32,20 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('0e5c4c15266218ef26c50fac0016095b'
-         '91663a89a7bbb70a35999a0a807f581f'
-         'e6b2857dd7c5952ae11f4c313859163e'
-         '20539185fd201c71065647f044bda4be'
-         'a344f6e36f2263404eae65ae155a79d0'
-         'a28d0fafd49b2e7076afde532449cb06'
-         '3862b06b6a5884efaae430defc44ef7d'
-         'c6f2b7be95850fed8d5513cb68492a11'
-         '48e27dba71bf8fbf70111376af2dff07'
-         'c51269c658e6277ce26f5e4f85a78ab5'
-         '0fd178aaaf90f61cb480901ff2c19617'
-         'acb023fe6cd33441959cac7e798e841b'
-         'ed1a7f185b4424ecb7fe69c50f221044'
-         '684575e8bca1c42b8ed19c698a54c010'
-         '5f004dbe31e643d162c3a4c00d1e99a9'
-         'fe1c41ddd4a62b4047f4c30cc74d3bce'
-         'e4a95ba4e61bbca15f89ba0ff29c3be8'
-         'da7f73b40481b785f5e895b56034fcd9'
-         'f9195967cfc8a9d8a5a62172050ef770'
+md5sums=('0959d759fd19e146367221aff504ad91'
+         'f400a38fe1f390748ac9d3a2b130858c'
+         'd4d5ef608e6847b33fd1228010b5a9b7'
+         '7236bc43b784f7a21eae1dd5e367cf42'
+         'dc7700f98355e60db663fa3ddeeeaa52'
+         'e7d55054bdd76ab793338bf80d9f8f65'
+         '9c87ed830c471858588ffa255553e658'
+         '793c1e2111f5df6c329e3966ec2f0a7f'
+         '0ec622273e58c1e5f8e0c6f7d819ba17'
+         'babf7c814e8fe2d343b96e7a348dd6c4'
+         '714299ed13c8734994344f276cf99872'
+         '15ccf75b10d59596550d510dbab5d485'
+         '18a95778ab7418fa0a7164bc81bec4fa'
+         '75f664c9c670b8cfeaac9044ae716771'
          'd483adf9941f8488d8bcd4e39ce227b5'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -109,7 +104,7 @@ build() {
   #return 1
   ####################
 
-  #yes "" | make config
+  yes "" | make config
 
   # build!
   unset LDFLAGS
