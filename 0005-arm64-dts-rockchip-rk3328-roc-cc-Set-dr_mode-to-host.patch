@@ -1,0 +1,31 @@
+From ddb5c76de60faa2b2e8706d8fc85abb32fa29a03 Mon Sep 17 00:00:00 2001
+From: Chen-Yu Tsai <wens@csie.org>
+Date: Thu, 26 Nov 2020 15:33:34 +0800
+Subject: [PATCH 05/12] arm64: dts: rockchip: rk3328-roc-cc: Set dr_mode to
+ "host" for OTG
+
+The board has a standard USB A female port connected to the USB OTG
+controller's data pins. Set dr_mode in the OTG controller node to
+indicate this usage, instead of having the implementation guess.
+
+Fixes: 2171f4fdac06 ("arm64: dts: rockchip: add roc-rk3328-cc board")
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index b06032383..be09ce771 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -334,6 +334,7 @@ &uart2 {
+ };
+ 
+ &usb20_otg {
++	dr_mode = "host";
+ 	status = "okay";
+ };
+ 
+-- 
+2.29.2
+

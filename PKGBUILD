@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64
-_srcname=linux-5.8
+_srcname=linux-5.9
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.8.7
+pkgver=5.9.11
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -16,23 +16,18 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' '
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        '0001-phy-rockchip-add-inno-usb3-phy-driver.patch'
-        '0002-Documentation-bindings-add-dt-documentation-for-rock.patch'
-        '0003-arm64-dts-rockchip-add-usb3-to-rk3328-devicetree.patch'
-        '0004-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc.patch'
-        '0005-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch'
-        '0006-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
-        '0007-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch'
-        '0008-arm64-dts-rk805-enable-rtc-when-power-off.patch'
-        '0009-media-hantro-Enable-H264-decoding-on-RK3328.patch'
+        '0001-phy-rockchip-add-rockchip-usb3-innosilicon-phy-drive.patch'
+        '0002-usb-dwc3-add-rockchip-innosilicon-usb3-glue-layer.patch'
+        '0003-arm64-dts-rockchip-add-rk3328-usb3-and-usb3phy-nodes.patch'
+        '0004-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc-boar.patch'
+        '0005-arm64-dts-rockchip-rk3328-roc-cc-Set-dr_mode-to-host.patch'
+        '0006-arm64-dts-rockchip-rk3328-roc-cc-Enable-HDMI-audio.patch'
+        '0007-arm64-dts-rockchip-rk3328-roc-cc-Enable-analog-audio.patch'
+        '0008-board-rk3328-roc-cc-adjust-DMC-opps.patch'
+        '0009-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
         '0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch'
-        '0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
-        '0012-media-v4l2-core-Add-helpers-to-build-the-H264-P-B0-B.patch'
-        '0013-media-hantro-h264-Use-the-generic-H264-reflist-build.patch'
-        '0014-media-dt-bindings-rockchip-Document-RK3399-Video-Dec.patch'
-        '0015-media-rkvdec-Add-the-rkvdec-driver.patch'
-        '0016-arm64-dts-rockchip-rk3399-Define-the-rockchip-Video-.patch'
-        '0017-arm64-dts-rockchip-rk3328-Define-the-rockchip-Video-.patch'
+        '0011-arm64-dts-rk805-enable-rtc-when-power-off.patch'
+        '0012-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -68,23 +63,18 @@ prepare() {
   git apply --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
-  git apply ../0001-phy-rockchip-add-inno-usb3-phy-driver.patch
-  git apply ../0002-Documentation-bindings-add-dt-documentation-for-rock.patch
-  git apply ../0003-arm64-dts-rockchip-add-usb3-to-rk3328-devicetree.patch
-  git apply ../0004-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc.patch
-  git apply ../0005-arm64-dts-rockchip-make-USB2.0-port-works-on-host-mo.patch
-  git apply ../0006-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-  git apply ../0007-arm64-dts-rockchip-add-spdif-sound-hdmi-audio-on-roc.patch
-  git apply ../0008-arm64-dts-rk805-enable-rtc-when-power-off.patch
-  git apply ../0009-media-hantro-Enable-H264-decoding-on-RK3328.patch
+  git apply ../0001-phy-rockchip-add-rockchip-usb3-innosilicon-phy-drive.patch
+  git apply ../0002-usb-dwc3-add-rockchip-innosilicon-usb3-glue-layer.patch
+  git apply ../0003-arm64-dts-rockchip-add-rk3328-usb3-and-usb3phy-nodes.patch
+  git apply ../0004-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc-boar.patch
+  git apply ../0005-arm64-dts-rockchip-rk3328-roc-cc-Set-dr_mode-to-host.patch
+  git apply ../0006-arm64-dts-rockchip-rk3328-roc-cc-Enable-HDMI-audio.patch
+  git apply ../0007-arm64-dts-rockchip-rk3328-roc-cc-Enable-analog-audio.patch
+  git apply ../0008-board-rk3328-roc-cc-adjust-DMC-opps.patch
+  git apply ../0009-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
   git apply ../0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch
-  git apply ../0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch
-  git apply ../0012-media-v4l2-core-Add-helpers-to-build-the-H264-P-B0-B.patch
-  git apply ../0013-media-hantro-h264-Use-the-generic-H264-reflist-build.patch
-  git apply ../0014-media-dt-bindings-rockchip-Document-RK3399-Video-Dec.patch
-  git apply ../0015-media-rkvdec-Add-the-rkvdec-driver.patch
-  git apply ../0016-arm64-dts-rockchip-rk3399-Define-the-rockchip-Video-.patch
-  git apply ../0017-arm64-dts-rockchip-rk3328-Define-the-rockchip-Video-.patch
+  git apply ../0011-arm64-dts-rk805-enable-rtc-when-power-off.patch
+  git apply ../0012-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch
 
   cat "${srcdir}/config" > ./.config
 

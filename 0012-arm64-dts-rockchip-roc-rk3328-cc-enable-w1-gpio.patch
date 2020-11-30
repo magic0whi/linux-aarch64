@@ -1,17 +1,17 @@
-From a6a22fa65736ac14f8e499dcf428d3b44bcc7d6c Mon Sep 17 00:00:00 2001
+From 2b4bcb49632ad55c2d47437797f0dfe4766c7f30 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Sat, 9 May 2020 10:21:19 +0000
-Subject: [PATCH 11/17] arm64: dts: rockchip: roc-rk3328-cc: enable w1-gpio
+Subject: [PATCH 12/12] arm64: dts: rockchip: roc-rk3328-cc: enable w1-gpio
 
 ---
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index a52ef4abd..78addb146 100644
+index 991a6a000..d360ed63e 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -146,6 +146,14 @@ user {
+@@ -102,6 +102,14 @@ user_led: led-1 {
  			mode = <0x05>;
  		};
  	};
@@ -25,11 +25,12 @@ index a52ef4abd..78addb146 100644
 +	};
  };
  
- &codec {
-@@ -355,6 +363,11 @@ usb20_host_drv: usb20-host-drv {
+ &analog_sound {
+@@ -318,6 +326,12 @@ usb20_host_drv: usb20-host-drv {
  			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
  		};
  	};
++
 +	gpio2 {
 +		w1_gpio_pins: w1_gpio_pins@0 {
 +			rockchip,pins = <RK_GPIO2 RK_PC4 RK_FUNC_GPIO &pcfg_pull_up>;
@@ -39,5 +40,5 @@ index a52ef4abd..78addb146 100644
  
  &sdmmc {
 -- 
-2.27.0
+2.29.2
 

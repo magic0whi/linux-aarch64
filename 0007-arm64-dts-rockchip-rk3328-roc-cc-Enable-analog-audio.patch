@@ -1,0 +1,51 @@
+From c1b2e849fcf0bc6cbf4dee25aca56d8f242c1a6b Mon Sep 17 00:00:00 2001
+From: Chen-Yu Tsai <wens@csie.org>
+Date: Thu, 26 Nov 2020 15:33:36 +0800
+Subject: [PATCH 07/12] arm64: dts: rockchip: rk3328-roc-cc: Enable analog
+ audio
+
+Now that driver support for the RK3328's audio codec, and the plumbing
+is defined at the SoC level, we can enable analog audio at the board
+level.
+
+Enable analog audio by enabling the codec and the I2S interface
+connected and the simple-audio-card that binds them together.
+
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 976b9556f..3ac876c08 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -104,6 +104,14 @@ user_led: led-1 {
+ 	};
+ };
+ 
++&analog_sound {
++	status = "okay";
++};
++
++&codec {
++	status = "okay";
++};
++
+ &cpu0 {
+ 	cpu-supply = <&vdd_arm>;
+ };
+@@ -278,6 +286,10 @@ &i2s0 {
+ 	status = "okay";
+ };
+ 
++&i2s1 {
++	status = "okay";
++};
++
+ &io_domains {
+ 	status = "okay";
+ 
+-- 
+2.29.2
+
