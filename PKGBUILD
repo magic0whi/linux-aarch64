@@ -46,7 +46,7 @@ md5sums=('0959d759fd19e146367221aff504ad91'
          '15ccf75b10d59596550d510dbab5d485'
          '18a95778ab7418fa0a7164bc81bec4fa'
          '75f664c9c670b8cfeaac9044ae716771'
-         'd483adf9941f8488d8bcd4e39ce227b5'
+         'bfdf1300a01e9980a4c1a44e9498fa5f'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -55,21 +55,18 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  git apply --whitespace=nowarn ../patch-${pkgver}
+  echo "Add upstream patch-${pkgver}"
+  patch -Nsp1 < "../patch-${pkgver}"
 
   # ALARM patches
-  git apply ../0001-phy-rockchip-add-rockchip-usb3-innosilicon-phy-drive.patch
-  git apply ../0002-usb-dwc3-add-rockchip-innosilicon-usb3-glue-layer.patch
-  git apply ../0003-arm64-dts-rockchip-add-rk3328-usb3-and-usb3phy-nodes.patch
-  git apply ../0004-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc-boar.patch
-  git apply ../0005-arm64-dts-rockchip-rk3328-roc-cc-Set-dr_mode-to-host.patch
-  git apply ../0006-arm64-dts-rockchip-rk3328-roc-cc-Enable-HDMI-audio.patch
-  git apply ../0007-arm64-dts-rockchip-rk3328-roc-cc-Enable-analog-audio.patch
-  git apply ../0008-board-rk3328-roc-cc-adjust-DMC-opps.patch
-  git apply ../0009-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch
-  git apply ../0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch
-  git apply ../0011-arm64-dts-rk805-enable-rtc-when-power-off.patch
-  git apply ../0012-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   cat "${srcdir}/config" > ./.config
 
@@ -82,6 +79,9 @@ prepare() {
 
 build() {
   cd ${_srcname}
+
+  # say "yes" to the new configs
+  yes "" | make config
 
   # get kernel version
   make prepare
@@ -104,7 +104,6 @@ build() {
   #return 1
   ####################
 
-  yes "" | make config
 
   # build!
   unset LDFLAGS
