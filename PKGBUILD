@@ -3,7 +3,7 @@
 
 buildarch=8
 
-pkgbase=linux-aarch64
+pkgbase=linux-renegade
 _srcname=linux-5.9
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
@@ -46,7 +46,7 @@ md5sums=('0959d759fd19e146367221aff504ad91'
          '15ccf75b10d59596550d510dbab5d485'
          '18a95778ab7418fa0a7164bc81bec4fa'
          'd22a25e6d73b07c0d122df76d1bfa277'
-         'bfdf1300a01e9980a4c1a44e9498fa5f'
+         '8ee3bc7e3ad880e559492ff53cd97e2f'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -68,7 +68,8 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  cat "${srcdir}/config" > ./.config
+  # copy config to kernel directory
+  cp "${srcdir}/config" ./arch/arm64/configs/${pkgbase#linux-}_defconfig
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
@@ -80,8 +81,8 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  # say "yes" to the new configs
-  yes "" | make config
+  # generate .config from defconfig 
+  make ${pkgbase#linux-}_defconfig
 
   # get kernel version
   make prepare
