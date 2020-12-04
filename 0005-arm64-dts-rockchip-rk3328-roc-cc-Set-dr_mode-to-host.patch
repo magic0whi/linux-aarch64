@@ -1,7 +1,7 @@
 From ddb5c76de60faa2b2e8706d8fc85abb32fa29a03 Mon Sep 17 00:00:00 2001
 From: Chen-Yu Tsai <wens@csie.org>
 Date: Thu, 26 Nov 2020 15:33:34 +0800
-Subject: [PATCH 05/12] arm64: dts: rockchip: rk3328-roc-cc: Set dr_mode to
+Subject: [PATCH 05/15] arm64: dts: rockchip: rk3328-roc-cc: Set dr_mode to
  "host" for OTG
 
 The board has a standard USB A female port connected to the USB OTG

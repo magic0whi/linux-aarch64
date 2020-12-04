@@ -1,7 +1,7 @@
 From dc1e95372188a0b9f0ccd78685e3605fac2f59c5 Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Tue, 6 Aug 2019 03:17:15 +0000
-Subject: [PATCH 11/12] arm64: dts: rk805 enable rtc when power off
+Subject: [PATCH 11/15] arm64: dts: rk805 enable rtc when power off
 
 ---
  arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 4 ++++

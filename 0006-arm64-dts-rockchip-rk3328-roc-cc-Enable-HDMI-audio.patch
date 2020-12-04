@@ -1,7 +1,7 @@
 From c8b44dbbb0bef2f4376a0ff9c63c3fabbabc0286 Mon Sep 17 00:00:00 2001
 From: Chen-Yu Tsai <wens@csie.org>
 Date: Thu, 26 Nov 2020 15:33:35 +0800
-Subject: [PATCH 06/12] arm64: dts: rockchip: rk3328-roc-cc: Enable HDMI audio
+Subject: [PATCH 06/15] arm64: dts: rockchip: rk3328-roc-cc: Enable HDMI audio
 
 The RK3328-ROC-CC already has HDMI display output enabled. Now that
 audio for the HDMI controller is supported, it can be enabled as well.

@@ -1,7 +1,7 @@
 From 37b17e98435e9fa0c316530206973ef64a3f9b40 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 16 Nov 2020 15:17:34 +0000
-Subject: [PATCH 02/12] usb: dwc3: add rockchip innosilicon usb3 glue layer
+Subject: [PATCH 02/15] usb: dwc3: add rockchip innosilicon usb3 glue layer
 
 This adds the handler glue for the rockchip usb3 innosilicon phy driver.
 This driver attaches to the phy driver through the notification system.

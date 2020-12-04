@@ -1,7 +1,7 @@
 From 39f56001ce1f6997ec25195ad7c808818fb97044 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 16 Nov 2020 15:17:35 +0000
-Subject: [PATCH 03/12] arm64: dts: rockchip: add rk3328 usb3 and usb3phy nodes
+Subject: [PATCH 03/15] arm64: dts: rockchip: add rk3328 usb3 and usb3phy nodes
 
 Add the usb3 controller and usb3 phy nodes to the rk3328.
 

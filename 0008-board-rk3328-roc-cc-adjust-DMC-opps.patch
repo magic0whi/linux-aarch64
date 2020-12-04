@@ -1,7 +1,7 @@
 From 7fd3caac2f27bd8d0983e0158c3e2b4d264a5e8b Mon Sep 17 00:00:00 2001
 From: tonymac32 <tonymckahan@gmail.com>
 Date: Wed, 7 Oct 2020 23:39:54 -0400
-Subject: [PATCH 08/12] board-rk3328-roc-cc-adjust-DMC-opps
+Subject: [PATCH 08/15] board-rk3328-roc-cc-adjust-DMC-opps
 
 Signed-off-by: tonymac32 <tonymckahan@gmail.com>
 ---

@@ -1,0 +1,27 @@
+From 8139235a782619f9bd1de20ecbaea20cfce95305 Mon Sep 17 00:00:00 2001
+From: magic0whi <lollipop.studio.cn@gmail.com>
+Date: Fri, 4 Dec 2020 22:06:31 +0800
+Subject: [PATCH 15/15] rockchip: rk3328: enable hardware rng for Renegade
+
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 2c58667b6..4068afd4c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -112,6 +112,10 @@ w1: onewire@0 {
+ 	};
+ };
+ 
++&rng {
++	status = "okay";
++};
++
+ &analog_sound {
+ 	status = "okay";
+ };
+-- 
+2.29.2
+

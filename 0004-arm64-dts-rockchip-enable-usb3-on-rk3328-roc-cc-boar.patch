@@ -1,7 +1,7 @@
 From 1af61b682abdd735ce289de119ab2657381c0f34 Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 16 Nov 2020 15:17:36 +0000
-Subject: [PATCH 04/12] arm64: dts: rockchip: enable usb3 on rk3328-roc-cc
+Subject: [PATCH 04/15] arm64: dts: rockchip: enable usb3 on rk3328-roc-cc
  board
 
 Enable the usb3 controller and usb3 phy nodes on the rk3328-roc-cc board file.

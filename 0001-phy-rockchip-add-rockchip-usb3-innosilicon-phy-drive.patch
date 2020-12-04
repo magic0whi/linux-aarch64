@@ -1,7 +1,7 @@
 From e7d116d01fd15757b908030e8f8b378c40e7020e Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 16 Nov 2020 15:17:33 +0000
-Subject: [PATCH 01/12] phy: rockchip: add rockchip usb3 innosilicon phy driver
+Subject: [PATCH 01/15] phy: rockchip: add rockchip usb3 innosilicon phy driver
 
 The innosilicon based usb3 phy used in rockchip devices such as the rk3328 is bugged, requiring special handling.
 The following erata have been observed:

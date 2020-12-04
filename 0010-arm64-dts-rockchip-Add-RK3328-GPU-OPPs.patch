@@ -1,7 +1,7 @@
 From 0fb97587131fcb114384bf60064a22f2abe2c153 Mon Sep 17 00:00:00 2001
 From: Robin Murphy <robin.murphy@arm.com>
 Date: Sun, 29 Dec 2019 20:14:38 +0000
-Subject: [PATCH 10/12] arm64: dts: rockchip: Add RK3328 GPU OPPs
+Subject: [PATCH 10/15] arm64: dts: rockchip: Add RK3328 GPU OPPs
 
 Add OPPs for the GPU, derived from the downstream Beelink A1 DTB.
 
