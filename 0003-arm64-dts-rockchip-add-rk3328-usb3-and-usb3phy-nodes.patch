@@ -1,7 +1,7 @@
-From 39f56001ce1f6997ec25195ad7c808818fb97044 Mon Sep 17 00:00:00 2001
+From 2dd114e674d1990536c969565930e856872dba9c Mon Sep 17 00:00:00 2001
 From: Peter Geis <pgwipeout@gmail.com>
 Date: Mon, 16 Nov 2020 15:17:35 +0000
-Subject: [PATCH 03/15] arm64: dts: rockchip: add rk3328 usb3 and usb3phy nodes
+Subject: [PATCH 03/14] arm64: dts: rockchip: add rk3328 usb3 and usb3phy nodes
 
 Add the usb3 controller and usb3 phy nodes to the rk3328.
 
@@ -11,7 +11,7 @@ Signed-off-by: Peter Geis <pgwipeout@gmail.com>
  1 file changed, 65 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index bbdb19a3e..9fea9203d 100644
+index 93c734d8a..e7f2490c5 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 @@ -853,6 +853,40 @@ u2phy_host: host-port {
@@ -55,7 +55,7 @@ index bbdb19a3e..9fea9203d 100644
  	sdmmc: mmc@ff500000 {
  		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
  		reg = <0x0 0xff500000 0x0 0x4000>;
-@@ -983,6 +1017,37 @@ usb_host0_ohci: usb@ff5d0000 {
+@@ -984,6 +1018,37 @@ usb_host0_ohci: usb@ff5d0000 {
  		status = "disabled";
  	};
  
@@ -94,5 +94,5 @@ index bbdb19a3e..9fea9203d 100644
  		compatible = "arm,gic-400";
  		#interrupt-cells = <3>;
 -- 
-2.29.2
+2.31.0
 

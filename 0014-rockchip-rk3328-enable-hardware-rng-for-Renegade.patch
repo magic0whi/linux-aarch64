@@ -1,7 +1,7 @@
-From 8139235a782619f9bd1de20ecbaea20cfce95305 Mon Sep 17 00:00:00 2001
+From 13fbd2577c0ad5fef0a0ffb75711ee4b61e6959d Mon Sep 17 00:00:00 2001
 From: magic0whi <lollipop.studio.cn@gmail.com>
 Date: Fri, 4 Dec 2020 22:06:31 +0800
-Subject: [PATCH 15/15] rockchip: rk3328: enable hardware rng for Renegade
+Subject: [PATCH 14/14] rockchip: rk3328: enable hardware rng for Renegade
 
 ---
  arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 4 ++++
@@ -23,5 +23,5 @@ index 2c58667b6..4068afd4c 100644
  	status = "okay";
  };
 -- 
-2.29.2
+2.31.0
 

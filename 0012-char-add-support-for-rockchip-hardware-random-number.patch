@@ -1,7 +1,7 @@
-From 76128421bd8121f975fc762f2e9c37cd6f27c41e Mon Sep 17 00:00:00 2001
+From 6af18b4c7a634b90621d5cdd1d804514d6910ac6 Mon Sep 17 00:00:00 2001
 From: wevsty <ty@wevs.org>
 Date: Mon, 24 Aug 2020 02:27:11 +0800
-Subject: [PATCH 13/15] char: add support for rockchip hardware random number
+Subject: [PATCH 12/14] char: add support for rockchip hardware random number
  generator
 
 This patch provides hardware random number generator support for all rockchip SOC.
@@ -17,10 +17,10 @@ Signed-off-by: wevsty <ty@wevs.org>
  create mode 100644 drivers/char/hw_random/rockchip-rng.c
 
 diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
-index f976a49e1..24829265d 100644
+index 595221052..cfac5e945 100644
 --- a/drivers/char/hw_random/Kconfig
 +++ b/drivers/char/hw_random/Kconfig
-@@ -384,6 +384,19 @@ config HW_RANDOM_STM32
+@@ -398,6 +398,19 @@ config HW_RANDOM_STM32
  
  	  If unsure, say N.
  
@@ -41,10 +41,10 @@ index f976a49e1..24829265d 100644
  	tristate "Microchip PIC32 Random Number Generator support"
  	depends on HW_RANDOM && MACH_PIC32
 diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
-index 26ae06844..60b4f3e03 100644
+index 5da344509..667a546fe 100644
 --- a/drivers/char/hw_random/Makefile
 +++ b/drivers/char/hw_random/Makefile
-@@ -35,6 +35,7 @@ obj-$(CONFIG_HW_RANDOM_IPROC_RNG200) += iproc-rng200.o
+@@ -36,6 +36,7 @@ obj-$(CONFIG_HW_RANDOM_IPROC_RNG200) += iproc-rng200.o
  obj-$(CONFIG_HW_RANDOM_ST) += st-rng.o
  obj-$(CONFIG_HW_RANDOM_XGENE) += xgene-rng.o
  obj-$(CONFIG_HW_RANDOM_STM32) += stm32-rng.o
@@ -399,5 +399,5 @@ index 000000000..718762f99
 +MODULE_LICENSE("GPL v2");
 +
 -- 
-2.29.2
+2.31.0
 

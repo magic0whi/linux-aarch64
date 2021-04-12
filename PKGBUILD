@@ -4,10 +4,10 @@
 buildarch=8
 
 pkgbase=linux-renegade
-_srcname=linux-5.9
+_srcname=linux-5.10
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.9.11
+pkgver=5.10.29
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -20,17 +20,16 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0002-usb-dwc3-add-rockchip-innosilicon-usb3-glue-layer.patch'
         '0003-arm64-dts-rockchip-add-rk3328-usb3-and-usb3phy-nodes.patch'
         '0004-arm64-dts-rockchip-enable-usb3-on-rk3328-roc-cc-boar.patch'
-        '0005-arm64-dts-rockchip-rk3328-roc-cc-Set-dr_mode-to-host.patch'
-        '0006-arm64-dts-rockchip-rk3328-roc-cc-Enable-HDMI-audio.patch'
-        '0007-arm64-dts-rockchip-rk3328-roc-cc-Enable-analog-audio.patch'
-        '0008-board-rk3328-roc-cc-adjust-DMC-opps.patch'
-        '0009-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
-        '0010-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch'
-        '0011-arm64-dts-rk805-enable-rtc-when-power-off.patch'
-        '0012-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
-        '0013-char-add-support-for-rockchip-hardware-random-number.patch'
-        '0014-arm64-dts-rockchip-add-hardware-random-number-genera.patch'
-        '0015-rockchip-rk3328-enable-hardware-rng-for-Renegade.patch'
+        '0005-arm64-dts-rockchip-rk3328-roc-cc-Enable-HDMI-audio.patch'
+        '0006-arm64-dts-rockchip-rk3328-roc-cc-Enable-analog-audio.patch'
+        '0007-board-rk3328-roc-cc-adjust-DMC-opps.patch'
+        '0008-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch'
+        '0009-arm64-dts-rockchip-Add-RK3328-GPU-OPPs.patch'
+        '0010-arm64-dts-rk805-enable-rtc-when-power-off.patch'
+        '0011-arm64-dts-rockchip-roc-rk3328-cc-enable-w1-gpio.patch'
+        '0012-char-add-support-for-rockchip-hardware-random-number.patch'
+        '0013-arm64-dts-rockchip-add-hardware-random-number-genera.patch'
+        '0014-rockchip-rk3328-enable-hardware-rng-for-Renegade.patch'
         'config'
         'linux.preset'
         '60-linux.hook'

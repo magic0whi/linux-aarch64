@@ -1,7 +1,7 @@
-From c1b2e849fcf0bc6cbf4dee25aca56d8f242c1a6b Mon Sep 17 00:00:00 2001
+From 513daea884f4978f0b940343e18c7144d288e8ca Mon Sep 17 00:00:00 2001
 From: Chen-Yu Tsai <wens@csie.org>
 Date: Thu, 26 Nov 2020 15:33:36 +0800
-Subject: [PATCH 07/15] arm64: dts: rockchip: rk3328-roc-cc: Enable analog
+Subject: [PATCH 06/14] arm64: dts: rockchip: rk3328-roc-cc: Enable analog
  audio
 
 Now that driver support for the RK3328's audio codec, and the plumbing
@@ -47,5 +47,5 @@ index 976b9556f..3ac876c08 100644
  	status = "okay";
  
 -- 
-2.29.2
+2.31.0
 
